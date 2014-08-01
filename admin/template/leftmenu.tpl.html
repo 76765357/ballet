@@ -1,0 +1,105 @@
+			<!-- left menu starts -->
+			<div class="span2 main-menu-span">
+				<div class="well nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+<?php
+$nav = array(
+		'推荐' => array(
+			array(
+			'icon'	=>	'icon-thumbs-up',
+			'link'	=>	'recommend.php',
+			'text'	=>	'推荐管理'
+			),
+		),
+
+		'新闻' => array(
+			array(
+			'icon'	=>	'icon-plus',
+			'link'	=>	'news_add.php',
+			'text'	=>	'添加新闻'
+			),
+			array(
+			'icon'	=>	'icon-calendar',
+			'link'	=>	'news.php',
+			'text'	=>	'所有新闻'
+			),
+		),
+
+		'剧团' => array(
+			array(
+			'icon'	=>	' icon-bullhorn',
+			'link'	=>	'troupe.php',
+			'text'	=>	'剧团管理'
+			),
+		),
+
+
+		'演员' => array(
+			array(
+			'icon'	=>	'icon-plus',
+			'link'	=>	'actor_add.php',
+			'text'	=>	'添加演员'
+			),
+			array(
+			'icon'	=>	'icon-user',
+			'link'	=>	'actor.php',
+			'text'	=>	'所有演员'
+			),
+		),
+
+		'演出' => array(
+			array(
+			'icon'	=>	'icon-plus',
+			'link'	=>	'performance_add.php',
+			'text'	=>	'添加演出'
+			),
+			array(
+			'icon'	=>	'icon-eye-open',
+			'link'	=>	'performance.php',
+			'text'	=>	'所有演出'
+			),
+		),
+
+		'剧目' => array(
+			array(
+			'icon'	=>	'icon-plus',
+			'link'	=>	'repertory_add.php',
+			'text'	=>	'添加剧目'
+			),
+			array(
+			'icon'	=>	'icon-list-alt',
+			'link'	=>	'repertory.php',
+			'text'	=>	'剧目管理'
+			),
+		),
+
+		'素材' => array(
+			array(
+			'icon'	=>	'icon-film',
+			'link'	=>	'video.php',
+			'text'	=>	'视频管理'
+			),
+			array(
+			'icon'	=>	'icon-film',
+			'link'	=>	'image.php',
+			'text'	=>	'图片管理'
+			),
+		),
+	);
+foreach ($nav as $key=>$value){
+?>
+
+						<li class="nav-header hidden-tablet"><?=$key?></li>
+<?php
+foreach ($value as $v){
+?>
+						<li><a class="ajax-link" href="<?=$v['link'] ?>"><i class="<?=$v['icon'] ?>"></i><span class="hidden-tablet"><?=$v['text'] ?></span></a></li>
+<?php
+}}
+?>
+
+					</ul>
+					<label id="for-is-ajax" class="hidden-tablet hide" for="is-ajax"><input id="is-ajax" type="checkbox" class="hide"> Ajax on menu</label>
+				</div><!--/.well -->
+			</div><!--/span-->
+			<!-- left menu ends -->
