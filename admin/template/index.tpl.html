@@ -20,7 +20,7 @@
 				<div id="content" class="span10">
 					<!-- content starts -->
 	    			<?php
-					        $main_file = TROOT. $action.'.tpl.html';
+					       $main_file = TROOT. $action.'.tpl.html';
 					        include( $main_file );
 					?>
 
@@ -47,7 +47,7 @@
 		
 	</div><!--/.fluid-container-->
 <?php require( dirname( __FILE__ ) . '/footjs.tpl.html'); ?>
-	<?php foreach($js as $v){?>
+	<?php if($js) foreach($js as $v){?>
 		<script src="<?=$v?>"></script>
 	<?php }?>		
 </body>

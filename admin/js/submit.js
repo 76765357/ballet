@@ -1,12 +1,12 @@
 $(function () {
-	$('#avatar_upload').fileupload({
+    $('#avatar_upload').fileupload({
         dataType: 'json',
         done: function (e, data) {
                 var t = $("#avatar_thumbs");
                 t.empty();
                 $.each(data.result.files, function (index, file) {
                     $('<img />').attr('src',file.thumbnailUrl).appendTo(t);
-                    $('<input name="avatar" type="hidden" />').val(file.name).appendTo(t);
+                    $('<input name="avatar" type="hidden" />').val(file.id).appendTo(t);
                 });
         },
         progressall: function (e, data) {
@@ -17,14 +17,15 @@ $(function () {
                 );
         }
     });
-	$('#rpt_upload').fileupload({
+
+    $('#rpt_upload').fileupload({
         dataType: 'json',
         done: function (e, data) {
                 var t = $("#rpt_thumbs");
                 $.each(data.result.files, function (index, file) {
                     $('<img />').attr({'src':file.thumbnailUrl}).appendTo(t);
                     $('<b> </b>').appendTo(t);
-                    $('<input name="rpt[]" type="hidden" />').val(file.name).appendTo(t);
+                    $('<input name="rpt[]" type="hidden" />').val(file.id).appendTo(t);
                     $('#rpt_progress .bar').hide();
                 });
         },
@@ -36,6 +37,30 @@ $(function () {
                     progress + '%'
                 );
         }
-    });
+	});
+	
+    $("#mainsave").click(function(e){
+		e.preventDefault();
+		$.ajax({
+				type: "POST",
+				url: "add.php",
+				dataType:'json',
+				data: $("#mainform").serialize(),
+				success: function(r){
+					if(r.status == 0){
+						$('#saveModal').modal('show');
+					}else{
+						alert("保存失败");	
+					}
+				}
+		})
+	});	
 
+	$("#goonAdd").click(function(){
+		window.location.reload();
+	});
+
+	$("#seeResult").click(function(){
+		window.location.href = $("input[name='tbname']").val() + '.php';
+	});
 });
