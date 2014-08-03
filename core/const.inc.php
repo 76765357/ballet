@@ -8,5 +8,6 @@
  */
 
 define('WL','123456');
+$yesno = array('否','是');
 //define('DIRECTORY_SEPARATOR', '/');
 ?>

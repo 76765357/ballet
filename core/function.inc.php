@@ -437,4 +437,68 @@ function get_full_url() {
             substr($_SERVER['SCRIPT_NAME'],0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
     }
 
+function ajax_json($data){
+	echo json_encode($data);
+	exit;
+}
+
+function get_actor_cate(){
+	global $db;
+	$sql = "select * from actor_cate";
+	$result = $db->fetchAll($sql);
+	$return = array();
+	if($result) {
+		foreach($result as $k=>$v){
+				$return[$v['id']]['name'] = $v['name'];	
+				$return[$v['id']]['desc'] = $v['desc'];	
+		}
+		return $return;
+	}else{
+		return false;
+	}
+}
+
+function get_actor_cate_select(){
+	$data = get_actor_cate();
+	if($data){
+		$html = '<select name="actor_cate">';
+		foreach($data as $k=>$v){
+			$html .= "<option value='{$k}'>{$v['name']}</option>";
+		}
+		$html .= '</select>';
+		return $html;
+	}else{
+		return 'no actor cate data';
+	}
+}
+
+function get_news_cate(){
+	global $db;
+	$sql = "select * from news_cate";
+	$result = $db->fetchAll($sql);
+	$return = array();
+	if($result) {
+		foreach($result as $k=>$v){
+				$return[$v['id']]['name'] = $v['name'];	
+				$return[$v['id']]['desc'] = $v['desc'];	
+		}
+		return $return;
+	}else{
+		return false;
+	}
+}
+
+function get_news_cate_select(){
+	$data = get_news_cate();
+	if($data){
+		$html = '<select name="news_cate">';
+		foreach($data as $k=>$v){
+			$html .= "<option value='{$k}'>{$v['name']}</option>";
+		}
+		$html .= '</select>';
+		return $html;
+	}else{
+		return 'no news cate data';
+	}
+}
 ?>

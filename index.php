@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__FILE__) . DS . 'init.php';
+include_once dirname(__FILE__) . '/' . 'init.php';
 
 //数据库用法参考 DB.class.php
 $actor = $db->fetchOne("select * from actor;");

@@ -26,6 +26,30 @@ if($a == 'rpt'){
 		'upload_url' => get_full_url() . $res
 	);
 }
+
 $options = $options + $base_config;
-$upload_handler = new UploadHandler($options);
+
+class CustomUploadHandler extends UploadHandler {
+
+    protected function initialize() {
+        global $db;
+	$this->db = $db;
+        parent::initialize();
+        $this->db->close();
+    }
+
+    protected function handle_file_upload($uploaded_file, $name, $size, $type, $error,
+            $index = null, $content_range = null) {
+        $file = parent::handle_file_upload(
+            $uploaded_file, $name, $size, $type, $error, $index, $content_range
+        );
+        if (empty($file->error)) {
+            $data = array('file'=>$file->name);
+            $this->db->insert('image',$data);
+            $file->id = $this->db->insertId();
+        }
+        return $file;
+    }
+}
+$upload_handler = new CustomUploadHandler($options);
 

@@ -4,30 +4,24 @@
 						<h2><i class="icon-edit"></i> 添加演员</h2>
 					</div>
 					<div class="box-content">
-<iframe class="hide" name="hiddenframe" /></iframe>
-						<form target="hiddenframe" method="POST" enctype="multipart/form-data" class="form-horizontal">
+						<form id="mainform" class="form-horizontal">
+							<input name="tbname" type="hidden" value="actor">
 							<fieldset>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">姓名</label>
+								<label class="control-label" >姓名</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" name="name" type="text" value="">
+								  <input class="input-xlarge focused" name="name" type="text" value="">
 								</div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">演员类别</label>
+								<label class="control-label" >演员类别</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" name="actor_title" type="text" value="">
+	
+								  <?= $actor_cate_select ?>												   
 								</div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">演员类别</label>
-								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" name="actor_title" type="text" value="">
-								<span class="help-inline">如：中央芭蕾舞首演，国家一级演员，演员队队长</span>
-								</div>
-							  </div>
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">头像</label>
+								<label class="control-label" >头像</label>
 								<div class="controls">
 								  <input class="input-xlarge focused" id="avatar_upload" data-url="upload.php?a=actor" name="files[]" type="file" /> 
 								</div>
@@ -40,13 +34,13 @@
 								  </div>
 							  </div>
 							  <div class="control-group">
-							  	<label class="control-label" for="textarea2">演员介绍</label>
+							  	<label class="control-label">演员介绍</label>
 								  <div class="controls">
-									<textarea class="cleditor" id="textarea2" name="description" rows="3"></textarea>
+									<textarea class="cleditor" name="desc" rows="3"></textarea>
 								  </div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">演员剧照</label>
+								<label class="control-label" >演员剧照</label>
 								<div class="controls">
 								  <input class="input-xlarge focused" id="rpt_upload" data-url="upload.php?a=rpt" name="files[]" type="file" /> 
 								</div>
@@ -61,20 +55,20 @@
 							  </div>
 
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">是否为推荐明星</label>
+								<label class="control-label" >是否为推荐明星</label>
 								<div class="controls">
 								  <label class="radio">
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+									<input type="radio" name="recommend" value="1" checked="">
 									是
 								  </label>
 								  <div style="clear:both"></div>
 								  <label class="radio">
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+									<input type="radio" name="recommend" value="0">
 									否
 								  </label>
 								</div>							  </div>
 							  <div class="form-actions">
-								<button type="submit" class="btn span1 btn-primary">保存</button>
+								<button id="mainsave" type="button" class="btn span2 btn-primary">保存</button>
 							  </div>
 							</fieldset>
 						  </form>
