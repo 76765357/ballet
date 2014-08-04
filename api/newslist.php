@@ -21,6 +21,7 @@ if($total>$page*$pagesize)
 }else{
 	$other_total=0;
 }
+$other_total=$total;//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
 $newslist_sql="select a.id,a.cate_id,a.title,b.file from news a left join image b on a.img_id =b.id limit $start,$pagesize";
 

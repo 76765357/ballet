@@ -6,7 +6,7 @@ include_once dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."init.php";
 include_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."conf.php";
 $news_img_base_dir="attachment/img/news".DIRECTORY_SEPARATOR;
 $news_video_base_dir="attachment/video/news".DIRECTORY_SEPARATOR;
-
+$video_img_base_dir="attachment/img/video".DIRECTORY_SEPARATOR;
 if(!is_numeric($_GET['newsid']))
 {
 
@@ -55,11 +55,12 @@ if($newesinfo)
 	$result['result']['detail']['description']=$newesinfo['description'];
 	$result['result']['detail']['images']=$image_list;
 	$result['result']['detail']['title']=$newesinfo['title'];
+    $result['result']['detail']['subtitle']=$newesinfo['subtitle'];
 
 	if($video['file'])
 	{
 		$result['result']['detail']['video']['url']=SITE_URL.$news_video_base_dir.$video['file'];
-		//确定表里是存地址还是id再补充
+        $result['result']['detail']['video']['image']=SITE_URL.$video_img_base_dir.$video['image'];
 	}
 
 	$result['success']='ture';
