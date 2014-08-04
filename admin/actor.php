@@ -1,6 +1,6 @@
 <?php
 include_once dirname(__FILE__) . '/../' . 'init.php';
-$data = array();
+
 $data['action'] = 'actor';
 $sql = "select * from actor";
 $result = $db->fetchAll($sql);

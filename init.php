@@ -19,6 +19,7 @@ define( 'TROOT' , dirname( __FILE__ ) . DS . 'admin/template'. DS  );
 //define( 'CROOT' , ROOT . 'core' . DS  );
 //define( 'AROOT' , ROOT . 'app' . DS  );
 
+include dirname(__FILE__) . DS .'config.php';
 include dirname(__FILE__) . DS .'core/const.inc.php';
 include dirname(__FILE__) . DS .'core/function.inc.php';
 include dirname(__FILE__) . DS .'class/Mysql.class.php';
@@ -30,14 +31,12 @@ $_REQUEST = transcribe( $_REQUEST );
 
 $CACHE = array();
 
-$DB_CONCFIG = array(
-        'host' => 'localhost',
-        'user' => 'root',
-        'password' => '',
-        'database' => 'cnballet',
-    );
 
 $CACHE['db']['default']['master'] = $DB_CONCFIG;
 
 $db = DB::getInstance('default', true);
-
+$data = array();
+//上传图片相关js
+$data['js'][] = '../vender/jquploader/js/vendor/jquery.ui.widget.js';
+$data['js'][] = '../vender/jquploader/js/jquery.iframe-transport.js';
+$data['js'][] = '../vender/jquploader/js/jquery.fileupload.js';
