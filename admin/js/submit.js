@@ -56,20 +56,22 @@ $(function () {
 	});
 	
     $("#mainsave").click(function(e){
-		e.preventDefault();
-		$.ajax({
-				type: "POST",
-				url: "add.php",
-				dataType:'json',
-				data: $("#mainform").serialize(),
-				success: function(r){
-					if(r.status == 0){
-						$('#saveModal').modal('show');
-					}else{
-						alert("保存失败");	
-					}
-				}
-		})
+        if($("#mainform")[0].checkValidity()){
+    		e.preventDefault();
+    		$.ajax({
+    				type: "POST",
+    				url: "add.php",
+    				dataType:'json',
+    				data: $("#mainform").serialize(),
+    				success: function(r){
+    					if(r.status == 0){
+    						$('#saveModal').modal('show');
+    					}else{
+    						alert("保存失败");	
+    					}
+    				}
+    		});
+        }
 	});	
 
 	$("#goonAdd").click(function(){

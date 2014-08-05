@@ -11,7 +11,7 @@
 							  <div class="control-group">
 								<label class="control-label" >姓名</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" name="name" type="text" value="<?=$name?>">
+								  <input class="input-xlarge focused" autofocus name="name" type="text" value="<?=$name?>" required>
 								</div>
 							  </div>
 							  <div class="control-group">
@@ -47,7 +47,7 @@
 							  <div class="control-group">
 								<label class="control-label" >演员剧照</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" id="rpt_upload" data-url="upload.php?a=rpt" name="files[]" type="file" multiple/> 
+								  <input class="input-xlarge focused" id="rpt_upload" data-url="upload.php?a=rpt" name="files[]" type="file" multiple/> 可以选择多个图片，图片类型支持jpg,png,gif 
 								</div>
 							  </div>
 
