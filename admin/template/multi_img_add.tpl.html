@@ -1,0 +1,27 @@
+
+							  <div class="control-group">
+								<label class="control-label" ><?=$multi_image_text?></label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="rpt_upload" data-url="upload.php?a=<?=$multi_image_moudle?>" name="files[]" type="file" multiple/> 可以选择多个图片，图片类型支持jpg,png,gif 
+								</div>
+							  </div>
+            					<div class="control-group">
+								  	<label class="control-label" for=""></label>
+								  	<div class="controls">
+								  	<div id="rpt_progress" style="width: 200px;">
+                                    	<div class="bar" style="width: 0%;"></div>
+                                	</div>
+									<ul class="dashboard-list" id="rpt_thumbs" style="width:500px">
+									<?php
+									if($multi_image ){
+										foreach ($multi_image as $k => $v) {
+											# code...
+											echo '<li><img class="dashboard-avatar" alt="" style="width:auto" src="'.$v['thumbimg'].'"><strong>文件名:</strong> <a href="' .$v['img']. '" target="_blank"/> '.$v['file'].'</a><br><strong>描&nbsp;&nbsp;&nbsp;述:</strong> <input name="rpt_desc[]" type="text" value="'.$v['desc'].'" style="height:12px"/><br><button class="btn btn-mini btn-danger del_img">删除</button><input name="rpt[]" type="hidden" value="'.$v['id'].'"></li>';
+										}
+									}
+									?>
+										
+									</ul>
+									</div>
+							  	</div>
+

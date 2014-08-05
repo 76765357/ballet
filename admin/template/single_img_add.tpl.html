@@ -1,0 +1,17 @@
+                            <div class="control-group">
+								<label class="control-label" ><?=$single_image_text?></label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="avatar_upload" data-url="upload.php?a=actor" name="files[]" type="file" /> 
+								</div>
+							  </div>
+							  <div class="control-group">
+							  	<label class="control-label" for="textarea2"></label>
+								  <div class="controls" id="avatar_thumbs">
+                                    <div id="avatar_progress" style="width: 200px;">
+                                    <div class="bar" style="width: 0%;"></div></div>
+                                    <?php if($avatar){
+                                    	echo '<img src="'.$avatar_src.'"'.' />';
+                    					echo '<input name="avatar" type="hidden" value="'.$avatar.'"/>';
+                                    }?>
+								  </div>
+							  </div>
