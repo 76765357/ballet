@@ -14,11 +14,21 @@ switch ($tbname):
     	$db->delete('actor',"id={$id}");
     	$db->delete('actor_image',"aid={$id}");
     	break;
-    case 2:
-        echo "i equals 2";
+    case 'news':
+    	$db->delete('news',"id={$id}");
+    	$db->delete('news_image',"nid={$id}");
+        break;
+    case 'rpt':
+    	$db->delete('repertory',"id={$id}");
+    	$db->delete('repertory_image',"rid={$id}");
+        break;
+    case 'pfm':
+    	$db->delete('performance',"id={$id}");
+    	$db->delete('performance_image',"pid={$id}");
+    	$db->delete('performance_image',"pid={$id}");
         break;
     default:
-        echo "i is not equal to 0, 1 or 2";
+        echo "wrong!";
 endswitch;
 
 if($db->affectedRows() > 0){

@@ -25,8 +25,21 @@ if($a == 'rpt'){
 	);
 }
 
-$options = $options + $base_config;
+if($a == 'news'){
+	$options = array(
+		'upload_dir' => dirname(__FILE__) . NEWS_RES,
+		'upload_url' => get_full_url() . NEWS_RES
+	);
+}
 
+if($a == 'pfm'){
+	$options = array(
+		'upload_dir' => dirname(__FILE__) . PFM_RES,
+		'upload_url' => get_full_url() . PFM_RES
+	);
+}
+
+$options = $options + $base_config;
 class CustomUploadHandler extends UploadHandler {
 
     protected function initialize() {

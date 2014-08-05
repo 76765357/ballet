@@ -5,27 +5,14 @@ include_once dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."init.php";
 include_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."conf.php";
 $pagesize=20;
 $video_img_base_dir="attachment/img/video".DIRECTORY_SEPARATOR;
-@$_GET['page']=intval($_GET['page']);
-if($_GET['page']>1)
-{
-	$page=$_GET['page'];
-}else{
-	$page=1;
-}
-$total_info = $db->fetchOne("select count(1) as total from video");
-$total=$total_info['total'];
-if($total>$page*$pagesize)
-{
-	$other_total=$total-$page*$pagesize;
-}else{
-	$other_total=0;
-}
-$other_total=$total;//需求改了，旧需求没删
-$start=($page-1)*$pagesize;
 
-$videolist_sql="select * from video limit $start,$pagesize";
+
+
+$videolist_sql="select video.*,recommend.type from video,recommend where recommend.cid=2 and recommend.rid=video.id and type >=1";
 
 $videolist = $db->fetchAll($videolist_sql);
+
+
 $result=array();
 if($videolist)
 {
@@ -47,11 +34,14 @@ if($videolist)
             $video_info['vediourl']="";
         }
 		$video_info['title']=$v['title'];
-		$video_list[]=$video_info;
-
+        if($v['type']==2){
+		    $p_video_list[]=$video_info;
+        }else if($v['type']==1){
+            $video_list[]=$video_info;
+        }
 	}
-	$result['result']['main']=$video_list;
-	$result['total']=$other_total;
+	$result['result']['main']=$p_video_list;
+    $result['result']['others']=$video_list;
 	$result['success']='ture';
 }else{
 	$result['success']='false';

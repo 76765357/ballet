@@ -462,7 +462,7 @@ function get_actor_cate_select($selectId = 0){
 	$data = get_actor_cate();
 	$s = '';
 	if($data){
-		$html = '<select name="actor_cate">';
+		$html = '<select name="cid">';
 		foreach($data as $k=>$v){
 			if($selectId == $k){
 				$s = 'selected';
@@ -493,12 +493,16 @@ function get_news_cate(){
 	}
 }
 
-function get_news_cate_select(){
+function get_news_cate_select($selectId = 0){
 	$data = get_news_cate();
 	if($data){
-		$html = '<select name="news_cate">';
+		$html = '<select name="cid">';
 		foreach($data as $k=>$v){
-			$html .= "<option value='{$k}'>{$v['name']}</option>";
+			if($selectId == $k){
+				$s = 'selected';
+			}
+			$html .= "<option value='{$k}' {$s}>{$v['name']}</option>";
+            $s = '';
 		}
 		$html .= '</select>';
 		return $html;
@@ -522,16 +526,66 @@ function get_actor_imgs($id){
 	foreach ($adata as $k => $v) {
 		# code...
 		$aimg = get_img_from_db($v['mid']);
-		$aimg['img'] = RPT_RES.$aimg['file'];
-		$aimg['thumbimg'] = RPT_RES_THUMB.$aimg['file'];
+		$aimg['img'] = get_full_url().RPT_RES.$aimg['file'];
+		$aimg['thumbimg'] = get_full_url().RPT_RES_THUMB.$aimg['file'];
 		
 		$data[$k] = $aimg;
 	}
 	return $data;
 }
 
+function get_imgs($id,$type){
+	if(!isset($id)) return false;
+	global $db;
+    if($type == 'act'){
+        $tb = array('tbname'=>'actor_image','id'=>'aid');
+        $res = ACTOR_RES;
+        $res_thumb = ACTOR_RES_THUMB;
+    }
+
+    if($type == 'news'){
+        $tb = array('tbname'=>'news_image','id'=>'nid');
+        $res = NEWS_RES;
+        $res_thumb = NEWS_RES_THUMB;
+    }
+
+    if($type == 'rpt'){
+        $tb = array('tbname'=>'repertory_image','id'=>'rid');
+        $res = RPT_RES;
+        $res_thumb = RPT_RES_THUMB;
+    }
+
+    if($type == 'pfm'){
+        $tb = array('tbname'=>'performance_image','id'=>'pid');
+        $res = PFM_RES;
+        $res_thumb = PFM_RES_THUMB;
+    }
+
+	$adata = $db->fetchAll("select * from {$tb['tbname']} where {$tb['id']}={$id}");
+	$data = array();
+	foreach ($adata as $k => $v) {
+		# code...
+		$aimg = get_img_from_db($v['mid']);
+		$aimg['img'] = get_full_url().$res.$aimg['file'];
+		$aimg['thumbimg'] = get_full_url().$res_thumb.$aimg['file'];
+		
+		$data[$k] = $aimg;
+	}
+	return $data;
+}
+
+
 function mark_img_del($id){
 	global $db;
 	return $db->update('image',array('type'=>'10'),"id={$id}");
+}
+
+function get_rpt_select(){
+    global $db;
+    $rpt = $db->fetchAll("select * from repertory");
+    foreach($rpt as $k=>$v){
+        $option .= "<option value='{$v['id']}'>{$v['title']}</option>";
+    }
+    return '<select multiple name="rpts" data-rel="chosen">'.$option.'</select>';
 }
 ?>

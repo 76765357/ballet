@@ -4,41 +4,74 @@
 						<h2><i class="icon-edit"></i> 添加演出</h2>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal">
+						<form id="mainform" class="form-horizontal">
 							<fieldset>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">演出标题</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" name="title" type="text" value="">
+								  <input class="input-xlarge focused" id="focusedInput" name="title" type="text" value="<?=$title?>">
 								</div>
 							  </div>
+
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">演出剧照</label>
+								<label class="control-label" for="focusedInput">演出子标题</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" name="actor_title" type="text" value="">
+								  <input class="input-xlarge focused" id="focusedInput" name="subtitle" type="text" value="<?=$subtitle?>">
 								</div>
 							  </div>
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">演出剧目列表</label>
-								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" name="avator" type="text" value="">
-								</div>
-							  </div>
+
+			                  <?php require( dirname( __FILE__ ) . '/single_img_add.tpl.html'); ?>
+
+
 							  <div class="control-group">
 							  	<label class="control-label" for="textarea2">演出详细描述</label>
 								  <div class="controls">
-									<textarea class="cleditor" id="textarea2" name="description" rows="3"></textarea>
+									<textarea class="cleditor" id="textarea2" name="desc" rows="3"><?=$desc?></textarea>
 								  </div>
 							  </div>
+<div class="control-group">
+                                <label class="control-label" for="selectError1">演出包含的演出</label>
+                                <div class="controls">
+                                <?=$rpt_select?>
+                                </div>
+                              </div>
+
+			                  <?php require( dirname( __FILE__ ) . '/multi_img_add.tpl.html'); ?>
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">演出时间</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="focusedInput" name="time" type="text" value="<?=$time?>">
+								</div>
+							  </div>
+
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">演出票价</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="focusedInput" name="price" type="text" value="<?=$price?>">
+								</div>
+							  </div>
+
+							  <div class="control-group">
+							  	<label class="control-label" for="textarea2">演出订票电话</label>
+								  <div class="controls">
+								  	<input class="input-xlarge focused" id="focusedInput" name="phone" type="text" value="<?=$phone?>">
+								  </div>
+							  </div>
+
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">演出地址</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="focusedInput" name="address" type="text" value="<?=$address?>">
+								</div>
+							  </div>
+
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">演出视频</label>
 								<div class="controls">
 								  <input class="input-xlarge focused" id="focusedInput" name="name" type="text" value="">
 								</div>
 							  </div>
-							  <div class="form-actions">
-								<button type="submit" class="btn span1 btn-primary">保存</button>
-							  </div>
+			                    <?php require( dirname( __FILE__ ) . '/form_action.tpl.html'); ?>
 							</fieldset>
 						  </form>
 					

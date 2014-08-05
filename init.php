@@ -41,3 +41,4 @@ $data['js'][] = '../vender/jquploader/js/vendor/jquery.ui.widget.js';
 $data['js'][] = '../vender/jquploader/js/jquery.iframe-transport.js';
 $data['js'][] = '../vender/jquploader/js/jquery.fileupload.js';
 $data['js'][] = '../vender/h5form/h5form.js';
+$data['js'][] = 'js/list.js';

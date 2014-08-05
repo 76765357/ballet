@@ -13,8 +13,8 @@ $tbname = v('tbname');
 //名字
 $name	= v('name');
 
-//演员分类
-$actor_cate = v('actor_cate');
+//xx分类
+$cid = v('cid');
 //头像和头像描述
 $avatar = v('avatar');
 $avatar_desc = v('avatar_desc');
@@ -27,6 +27,11 @@ $rpt_desc	= v('rpt_desc');
 $recommend = v('recommend');
 //标题
 $title = v('title');
+$subtitle = v('subtitle');
+$time= v('time');
+$price= v('price');
+$phone= v('phone');
+$address= v('address');
 
 //根据表名确定插入类型，有的可能要插入多张表
 switch ($tbname):
@@ -36,14 +41,10 @@ switch ($tbname):
 			"name" 		=> $name,
 			"avatar" 	=> $avatar,
 			"desc" 		=> $desc,
-			"cid" 		=> $actor_cate,
+			"cid" 		=> $cid,
 			"recommend" => $recommend,
 		);
 		if($id > 0){
-			//avatar is an id,set old avatar disable;
-			$avatar = $db->fetchSclare("select avatar from actor where id={$id}");
-			mark_img_del($avatar);
-
 			//do update
 			$db->update($tbname,$data,"id={$id}");
 			$aid = $id;
@@ -66,17 +67,68 @@ switch ($tbname):
         break;
     case 'news':
 		$data = array(
-			"title"		=> $title,
-			"description" 		=> $desc,
+			"title"		   => $title,
+			"subtitle"     => $subtitle,
+			"description"  => $desc,
+			"avatar"    => $avatar,
+			"cid" 		=> $cid,
 		);
+		if($id > 0){
+			//do update
+			$db->update($tbname,$data,"id={$id}");
+			$aid = $id;
 			
-		$db->insert($tbname,$data);
+			//do clean 删掉剧照关系
+			$db->delete('news_image',"nid={$id}");
+		}else{
+			$db->insert($tbname,$data);
+			$aid = $db->insertId();
+		}
+		
+		//剧照要单独保存
+		if(is_array($rpt)){
+			foreach($rpt as $k=>$v){
+				$data = array('nid'=>$aid,'mid'=>$v);
+				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
+				$db->insert('news_image',$data);
+			}
+		}
+
         break;
-    case 2:
-        echo "i equals 2";
+    case 'rpt':
+		$data = array(
+			"title"         => $title,
+			"subtitle"      => $subtitle,
+			"description"   => $desc,
+			"avatar"        => $avatar,
+			"time" 	    	=> $time,
+			"price" 		=> $price,
+			"address" 		=> $address,
+		);
+		if($id > 0){
+			//do update
+			$db->update($tbname,$data,"id={$id}");
+			$aid = $id;
+			
+			//do clean 删掉剧照关系
+			$db->delete('repertory_image',"rid={$id}");
+		}else{
+			$db->insert($tbname,$data);
+			$aid = $db->insertId();
+		}
+		
+		//剧照要单独保存
+		if(is_array($rpt)){
+			foreach($rpt as $k=>$v){
+				$data = array('rid'=>$aid,'mid'=>$v);
+				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
+				$db->insert('repertory_image',$data);
+			}
+		}
+
         break;
     default:
-        echo "i is not equal to 0, 1 or 2";
+        echo "wrong add";
 endswitch;
 
 if($db->affectedRows() > 0){

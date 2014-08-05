@@ -1,3 +1,4 @@
+<input type="hidden" id="tbname" name="tbname" value="news" />
 <table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
@@ -16,8 +17,8 @@ foreach($result as $k=>$v){
 						<td class="center"><?=$news_cate[$v['cate_id']]['name']?></td>
 						<td><?=$v['subtitle']?></td>
 						<td class="center">
-							<a class="btn btn-info" href="#"><i class="icon-edit icon-white"></i>编辑</a>
-							<a class="btn btn-danger" href="#"><i class="icon-trash icon-white"></i>删除</a>
+							<a class="btn btn-info" href="news_add.php?id=<?=$v['id']?>"><i class="icon-edit icon-white"></i>编辑</a>
+							<a class="btn btn-danger del" data-id="<?=$v['id']?>" href="#"><i class="icon-trash icon-white"></i>删除</a>
 						</td>
 					</tr>
 		<?php

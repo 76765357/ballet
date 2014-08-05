@@ -2,7 +2,7 @@ $(function () {
     function get_img_li(imgurl,thumbnailUrl,id,name,size){
         return '<li>' +
                 '<img class="dashboard-avatar" alt="" style="width:auto" src="'+ thumbnailUrl +'">' +
-                '<strong>文件名:</strong><a href="' + imgurl + '" target="_blank"/> '+ name +'</a><br>'+
+                '<strong>文件名:</strong><a href="' + imgurl + '" target="_blank"> '+ name +'</a><br>'+
                 //'<strong>大&nbsp;&nbsp;&nbsp;小:</strong> '+ Math.floor(size/1024) +'KB<br>'+
                 '<strong>描&nbsp;&nbsp;&nbsp;述:</strong> <input name="rpt_desc[]" type="text" style="height:12px"/><br>'+
                 '<button class="btn btn-mini btn-danger del_img">删除</button>' +
