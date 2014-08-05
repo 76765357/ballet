@@ -6,11 +6,12 @@
 					<div class="box-content">
 						<form id="mainform" class="form-horizontal">
 							<input name="tbname" type="hidden" value="actor">
+							<input name="id" type="hidden" value="<?=$id?>">
 							<fieldset>
 							  <div class="control-group">
 								<label class="control-label" >姓名</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" name="name" type="text" value="">
+								  <input class="input-xlarge focused" name="name" type="text" value="<?=$name?>">
 								</div>
 							  </div>
 							  <div class="control-group">
@@ -31,39 +32,61 @@
 								  <div class="controls" id="avatar_thumbs">
                                     <div id="avatar_progress" style="width: 200px;">
                                     <div class="bar" style="width: 0%;"></div></div>
+                                    <?php if($avatar){
+                                    	echo '<img src="'.$avatar_src.'"'.' />';
+                    					echo '<input name="avatar" type="hidden" value="'.$avatar.'"/>';
+                                    }?>
 								  </div>
 							  </div>
 							  <div class="control-group">
 							  	<label class="control-label">演员介绍</label>
 								  <div class="controls">
-									<textarea class="cleditor" name="desc" rows="3"></textarea>
+									<textarea class="cleditor" name="desc" rows="3"><?=$desc?></textarea>
 								  </div>
 							  </div>
 							  <div class="control-group">
 								<label class="control-label" >演员剧照</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" id="rpt_upload" data-url="upload.php?a=rpt" name="files[]" type="file" /> 
+								  <input class="input-xlarge focused" id="rpt_upload" data-url="upload.php?a=rpt" name="files[]" type="file" multiple/> 
 								</div>
 							  </div>
 
-                              <div class="control-group">
+                              <!--<div class="control-group">
 							  	<label class="control-label" for=""></label>
 								  <div class="controls" id="rpt_thumbs">
-                                    <div id="rpt_progress" style="width: 200px;">
-                                    <div class="bar" style="width: 0%;"></div></div>
+                                    
 								  </div>
-							  </div>
-
-							  <div class="control-group">
+							  </div> -->
+								<div class="control-group">
+								  	<label class="control-label" for=""></label>
+								  	<div class="controls">
+								  	<div id="rpt_progress" style="width: 200px;">
+                                    	<div class="bar" style="width: 0%;"></div>
+                                	</div>
+									<ul class="dashboard-list" id="rpt_thumbs" style="width:500px">
+									<?php
+									if($actor_image){
+										foreach ($actor_image as $k => $v) {
+											# code...
+											echo '<li><img class="dashboard-avatar" alt="" style="width:auto" src="'.$v['thumbimg'].'"><strong>文件名:</strong> <a href="' .$v['img']. '" target="_blank"/> '.$v['file'].'</a><br><strong>描&nbsp;&nbsp;&nbsp;述:</strong> <input name="rpt_desc[]" type="text" value="'.$v['desc'].'" style="height:12px"/><br><button class="btn btn-mini btn-danger del_img">删除</button><input name="rpt[]" type="hidden" value="'.$v['id'].'"></li>';
+										}
+									}
+									?>
+										
+									</ul>
+									</div>
+							  	</div>
+								<div class="control-group">
 								<label class="control-label" >是否为推荐明星</label>
 								<div class="controls">
+
 								  <label class="radio">
-									<input type="radio" name="recommend" value="1" checked="">
+									<input type="radio" name="recommend" value="1" <?php if($recommend == 1) echo 'checked'?>>
 									是
 								  </label>
 								  <div style="clear:both"></div>
 								  <label class="radio">
-									<input type="radio" name="recommend" value="0">
+									<input type="radio" name="recommend" value="0" <?php if($recommend == 0) echo 'checked'?>>
 									否
 								  </label>
 								</div>							  </div>

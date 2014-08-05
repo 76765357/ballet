@@ -263,12 +263,25 @@ function docReady(){
 
 	//datatable
 	$('.datatable').dataTable({
-			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
-			"sPaginationType": "bootstrap",
-			"oLanguage": {
-			"sLengthMenu": "_MENU_ records per page"
-			}
-		} );
+                        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
+                        "sPaginationType": "bootstrap",
+                        "sSortableNone":false,
+                        "oLanguage": {
+                        "sLengthMenu": "_MENU_ 每页显示条目数量",
+                        "sSearch":"搜索:",
+                        "sProcessing":"正在努力加载 <img src='static/image/5-121204194026.gif' />",
+                        "sZeroRecords":"未找到符合条件的结果",
+                        "oPaginate":{sFirst:"第一页",sLast:"最后一页",sNext:"下一页",sPrevious:"上一页"},
+                        "sEmptyTable":"无可用数据",
+                        "sInfo":"从 _START_ 到 _END_ , 总共 _TOTAL_ 行数据",
+                        "sInfoEmpty":"从 0 到 0 ,总共 0 行数据",
+                        "sInfoFiltered":"(从 _MAX_ 行数据中搜索的结果)",
+                        //"sLengthMenu": ""
+                        },
+                        "bSort": true,
+                        "aaSorting": []
+        });
+	$(".dataTables_filter").addClass('pull-right');
 	$('.btn-close').click(function(e){
 		e.preventDefault();
 		$(this).parent().parent().parent().fadeOut();

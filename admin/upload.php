@@ -11,19 +11,17 @@ $base_config = array(
 );
 //演员
 if($a == 'actor'){
-	$res =  '/../attachment/img/actor/' ; 
 	$options = array(
-		'upload_dir' => dirname(__FILE__) . $res,
-		'upload_url' => get_full_url() . $res
+		'upload_dir' => dirname(__FILE__) . ACTOR_RES,
+		'upload_url' => get_full_url() . ACTOR_RES
 	);
 }
 
 //剧照
 if($a == 'rpt'){
-	$res =  '/../attachment/img/rpt/' ; 
 	$options = array(
-		'upload_dir' => dirname(__FILE__) . $res,
-		'upload_url' => get_full_url() . $res
+		'upload_dir' => dirname(__FILE__) . RPT_RES,
+		'upload_url' => get_full_url() . RPT_RES
 	);
 }
 

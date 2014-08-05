@@ -458,12 +458,17 @@ function get_actor_cate(){
 	}
 }
 
-function get_actor_cate_select(){
+function get_actor_cate_select($selectId = 0){
 	$data = get_actor_cate();
+	$s = '';
 	if($data){
 		$html = '<select name="actor_cate">';
 		foreach($data as $k=>$v){
-			$html .= "<option value='{$k}'>{$v['name']}</option>";
+			if($selectId == $k){
+				$s = 'selected';
+			}
+			$html .= "<option value='{$k}' {$s}>{$v['name']}</option>";
+			$s = '';
 		}
 		$html .= '</select>';
 		return $html;
@@ -500,5 +505,33 @@ function get_news_cate_select(){
 	}else{
 		return 'no news cate data';
 	}
+}
+
+function get_img_from_db($id){
+	if(!isset($id)) return false;
+	global $db;
+	$data = $db->fetchOne("select * from image where id={$id}");
+	return $data;
+}
+
+function get_actor_imgs($id){
+	if(!isset($id)) return false;
+	global $db;
+	$adata = $db->fetchAll("select * from actor_image where aid={$id}");
+	$data = array();
+	foreach ($adata as $k => $v) {
+		# code...
+		$aimg = get_img_from_db($v['mid']);
+		$aimg['img'] = RPT_RES.$aimg['file'];
+		$aimg['thumbimg'] = RPT_RES_THUMB.$aimg['file'];
+		
+		$data[$k] = $aimg;
+	}
+	return $data;
+}
+
+function mark_img_del($id){
+	global $db;
+	return $db->update('image',array('type'=>'10'),"id={$id}");
 }
 ?>

@@ -6,6 +6,7 @@
 */
 include_once dirname(__FILE__) . '/../' . 'init.php';
 
+$id = v('id');
 //操作表名
 $tbname = v('tbname');
 
@@ -18,7 +19,7 @@ $actor_cate = v('actor_cate');
 $avatar = v('avatar');
 $avatar_desc = v('avatar_desc');
 //大段文字说明
-$desc	= getReqHtml(v('desc'));
+$desc	= (v('desc'));
 //剧照和剧照描述
 $rpt	= v('rpt');
 $rpt_desc	= v('rpt_desc');
@@ -35,15 +36,30 @@ switch ($tbname):
 			"name" 		=> $name,
 			"avatar" 	=> $avatar,
 			"desc" 		=> $desc,
+			"cid" 		=> $actor_cate,
 			"recommend" => $recommend,
 		);
+		if($id > 0){
+			//avatar is an id,set old avatar disable;
+			$avatar = $db->fetchSclare("select avatar from actor where id={$id}");
+			mark_img_del($avatar);
+
+			//do update
+			$db->update($tbname,$data,"id={$id}");
+			$aid = $id;
 			
-		$db->insert($tbname,$data);
-		$aid = $db->insertId();
+			//do clean 删掉剧照关系
+			$db->delete('actor_image',"aid={$id}");
+		}else{
+			$db->insert($tbname,$data);
+			$aid = $db->insertId();
+		}
+		
 		//剧照要单独保存
 		if(is_array($rpt)){
 			foreach($rpt as $k=>$v){
 				$data = array('aid'=>$aid,'mid'=>$v);
+				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
 				$db->insert('actor_image',$data);
 			}
 		}
