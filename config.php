@@ -7,7 +7,7 @@ $DB_CONCFIG = array(
     );
 
 
-define('ACTOR_RES', '/../attachment/img/actor/');
-define('ACTOR_RES_THUMB', '/../attachment/img/actor/thumbnail/');
-define('RPT_RES',	'/../attachment/img/rpt/');
-define('RPT_RES_THUMB',	'/../attachment/img/rpt/thumbnail/');
+define('ACTOR_RES', get_full_url().'/../attachment/img/actor/');
+define('ACTOR_RES_THUMB', get_full_url().'/../attachment/img/actor/thumbnail/');
+define('RPT_RES',	get_full_url().'/../attachment/img/rpt/');
+define('RPT_RES_THUMB',	get_full_url().'/../attachment/img/rpt/thumbnail/');

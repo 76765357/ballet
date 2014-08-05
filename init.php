@@ -19,9 +19,9 @@ define( 'TROOT' , dirname( __FILE__ ) . DS . 'admin/template'. DS  );
 //define( 'CROOT' , ROOT . 'core' . DS  );
 //define( 'AROOT' , ROOT . 'app' . DS  );
 
-include dirname(__FILE__) . DS .'config.php';
 include dirname(__FILE__) . DS .'core/const.inc.php';
 include dirname(__FILE__) . DS .'core/function.inc.php';
+include dirname(__FILE__) . DS .'config.php';
 include dirname(__FILE__) . DS .'class/Mysql.class.php';
 include dirname(__FILE__) . DS .'class/DB.class.php';
 
