@@ -20,6 +20,7 @@ $avatar = v('avatar');
 $avatar_desc = v('avatar_desc');
 //大段文字说明
 $desc	= (v('desc'));
+$content	= (v('content'));
 //剧照和剧照描述
 $rpt	= v('rpt');
 $rpt_desc	= v('rpt_desc');
@@ -31,7 +32,7 @@ $subtitle = v('subtitle');
 $time= v('time');
 $price= v('price');
 $phone= v('phone');
-$address= v('address');
+$addr= v('addr');
 
 //根据表名确定插入类型，有的可能要插入多张表
 switch ($tbname):
@@ -70,8 +71,8 @@ switch ($tbname):
 			"title"		   => $title,
 			"subtitle"     => $subtitle,
 			"description"  => $desc,
-			"avatar"    => $avatar,
-			"cid" 		=> $cid,
+			"img_id"    => $avatar,
+			"cate_id" 		=> $cid,
 		);
 		if($id > 0){
 			//do update
@@ -95,15 +96,16 @@ switch ($tbname):
 		}
 
         break;
-    case 'rpt':
+    case 'repertory':
 		$data = array(
 			"title"         => $title,
 			"subtitle"      => $subtitle,
-			"description"   => $desc,
-			"avatar"        => $avatar,
+			"desc"   		=> $desc,
+			"img_id"        => $avatar,
 			"time" 	    	=> $time,
 			"price" 		=> $price,
-			"address" 		=> $address,
+			"phone" 		=> $phone,
+			"addr" 			=> $addr,
 		);
 		if($id > 0){
 			//do update
@@ -123,6 +125,65 @@ switch ($tbname):
 				$data = array('rid'=>$aid,'mid'=>$v);
 				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
 				$db->insert('repertory_image',$data);
+			}
+		}
+
+        break;
+     case 'performance':
+		$data = array(
+			"title"         => $title,
+			"subtitle"      => $subtitle,
+			"desc"   => $desc,
+			"img_id"        => $avatar,
+			"time" 	    	=> $time,
+			"price" 		=> $price,
+			"phone" 		=> $phone,
+			"addr" 		=> $addr,
+		);
+		if($id > 0){
+			//do update
+			$db->update($tbname,$data,"id={$id}");
+			$aid = $id;
+			
+			//do clean 删掉剧照关系
+			$db->delete('performance_image',"pid={$id}");
+		}else{
+			$db->insert($tbname,$data);
+			$aid = $db->insertId();
+		}
+		
+		//剧照要单独保存
+		if(is_array($rpt)){
+			foreach($rpt as $k=>$v){
+				$data = array('pid'=>$aid,'mid'=>$v);
+				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
+				$db->insert('performance_image',$data);
+			}
+		}
+
+        break;
+    case 'troupe':
+		$data = array(
+			"content"         => $content,
+		);
+		if($id > 0){
+			//do update
+			$db->update($tbname,$data,"id={$id}");
+			$aid = $id;
+			
+			//do clean 删掉剧照关系
+			$db->delete('troupe_image',"tid={$id}");
+		}else{
+			$db->insert($tbname,$data);
+			$aid = $db->insertId();
+		}
+		
+		//剧照要单独保存
+		if(is_array($rpt)){
+			foreach($rpt as $k=>$v){
+				$data = array('tid'=>$aid,'mid'=>$v);
+				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
+				$db->insert('troupe_image',$data);
 			}
 		}
 

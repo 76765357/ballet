@@ -561,6 +561,12 @@ function get_imgs($id,$type){
         $res_thumb = PFM_RES_THUMB;
     }
 
+    if($type == 'trp'){
+        $tb = array('tbname'=>'troupe_image','id'=>'tid');
+        $res = TRP_RES;
+        $res_thumb = TRP_RES_THUMB;
+    }
+
 	$adata = $db->fetchAll("select * from {$tb['tbname']} where {$tb['id']}={$id}");
 	$data = array();
 	foreach ($adata as $k => $v) {

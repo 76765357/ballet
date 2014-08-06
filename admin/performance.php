@@ -2,7 +2,7 @@
 include_once dirname(__FILE__) . '/../' . 'init.php';
 
 $data['action'] = 'performance';
-$sql = "select * from performance";
+$sql = "select * from performance order by id desc";
 $result = $db->fetchAll($sql);
 $data['result'] = $result;
 $data['yesno'] = $yesno;

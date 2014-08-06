@@ -25,7 +25,7 @@ switch ($tbname):
     case 'pfm':
     	$db->delete('performance',"id={$id}");
     	$db->delete('performance_image',"pid={$id}");
-    	$db->delete('performance_image',"pid={$id}");
+    	$db->delete('performance_repertory',"pid={$id}");
         break;
     default:
         echo "wrong!";

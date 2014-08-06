@@ -39,6 +39,13 @@ if($a == 'pfm'){
 	);
 }
 
+if($a == 'trp'){
+    $options = array(
+        'upload_dir' => dirname(__FILE__) . TRP_RES,
+        'upload_url' => get_full_url() . TRP_RES
+    );
+}
+
 $options = $options + $base_config;
 class CustomUploadHandler extends UploadHandler {
 

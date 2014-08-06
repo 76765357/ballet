@@ -1,7 +1,7 @@
 <?php
 include_once dirname(__FILE__) . '/../' . 'init.php';
 $data['action'] = 'news';
-$sql = "select * from news order by id asc";
+$sql = "select * from news order by id desc";
 $result = $db->fetchAll($sql);
 $data['result'] = $result;
 $data['news_cate'] = get_news_cate();

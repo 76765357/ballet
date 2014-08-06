@@ -18,3 +18,6 @@ define('NEWS_RES_THUMB', '/../attachment/img/news/thumbnail/');
 
 define('PFM_RES', '/../attachment/img/performance/');
 define('PFM_RES_THUMB', '/../attachment/img/performance/thumbnail/');
+
+define('TRP_RES', '/../attachment/img/troupe/');
+define('TRP_RES_THUMB', '/../attachment/img/troupe/thumbnail/');

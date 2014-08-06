@@ -5,17 +5,17 @@
 					</div>
 					<div class="box-content">
 						<form id="mainform" class="form-horizontal">
-							<input name="tbname" type="hidden" value="actor">
+							<input name="tbname" type="hidden" value="troupe">
+							<input name="id" type="hidden" value="1">
 							<fieldset>
 							  <div class="control-group">
 							  	<label class="control-label">剧团介绍</label>
 								  <div class="controls">
-									<textarea class="cleditor" name="desc" rows="3"><?=$result['content']?></textarea>
+									<textarea class="cleditor" name="content" rows="5" col="10"><?=$content?></textarea>
 								  </div>
 							  </div>
-							  <div class="form-actions">
-								<button id="mainsave" type="button" class="btn span2 btn-primary">保存</button>
-							  </div>
+							  <?php require( dirname( __FILE__ ) . '/multi_img_add.tpl.html'); ?>
+							  <?php require( dirname( __FILE__ ) . '/form_action.tpl.html'); ?>
 							</fieldset>
 						  </form>
 					

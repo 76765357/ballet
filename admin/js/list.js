@@ -9,12 +9,12 @@ $(function () {
 					dataType:'json',
 					data: "id=" + $(this).attr('data-id') +' &tbname=' + $('#tbname').val(),
 					success: function(r){
-						if(r.status == 0){
+						//if(r.status == 0){
 							alert("删除成功");
-							window.location.href.reload();
-						}else{
-							alert("删除失败");	
-						}
+							window.location.reload();
+						//}else{
+						//	alert("删除失败");	
+						//}
 					}
 			});
 		}
