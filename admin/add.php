@@ -33,6 +33,8 @@ $time= v('time');
 $price= v('price');
 $phone= v('phone');
 $addr= v('addr');
+//演出包含的剧目
+$rpts = v('rpts');
 
 //根据表名确定插入类型，有的可能要插入多张表
 switch ($tbname):
@@ -145,8 +147,9 @@ switch ($tbname):
 			$db->update($tbname,$data,"id={$id}");
 			$aid = $id;
 			
-			//do clean 删掉剧照关系
+			//do clean 删掉剧照关系、包含的剧目关系
 			$db->delete('performance_image',"pid={$id}");
+			$db->delete('performance_repertory',"pid={$id}");
 		}else{
 			$db->insert($tbname,$data);
 			$aid = $db->insertId();
@@ -161,6 +164,13 @@ switch ($tbname):
 			}
 		}
 
+		//演出包含的剧目关系
+		if(is_array($rpts)){
+			foreach($rpts as $k=>$v){
+				$data = array('pid'=>$aid,'rid'=>$v);
+				$db->insert('performance_repertory',$data);
+			}
+		}
         break;
     case 'troupe':
 		$data = array(

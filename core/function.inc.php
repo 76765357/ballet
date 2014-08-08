@@ -586,12 +586,13 @@ function mark_img_del($id){
 	return $db->update('image',array('type'=>'10'),"id={$id}");
 }
 
-function get_rpt_select(){
+function get_rpt_select($selectArr = array()){
     global $db;
     $rpt = $db->fetchAll("select * from repertory");
     foreach($rpt as $k=>$v){
-        $option .= "<option value='{$v['id']}'>{$v['title']}</option>";
+    	$selected = (!empty($selectArr) && in_array($v['id'],$selectArr)) ? 'selected' : '';
+        $option .= "<option value='{$v['id']}' {$selected}>{$v['title']}</option>";
     }
-    return '<select multiple name="rpts" data-rel="chosen">'.$option.'</select>';
+    return '<select multiple name="rpts[]" data-rel="chosen">'.$option.'</select>';
 }
 ?>

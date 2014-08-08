@@ -16,7 +16,7 @@
 									if($multi_image ){
 										foreach ($multi_image as $k => $v) {
 											# code...
-											echo '<li><img class="dashboard-avatar" alt="" style="width:auto" src="'.$v['thumbimg'].'"><strong>文件名:</strong> <a href="' .$v['img']. '" target="_blank"/> '.$v['file'].'</a><br><strong>描&nbsp;&nbsp;&nbsp;述:</strong> <input name="rpt_desc[]" type="text" value="'.$v['desc'].'" style="height:12px"/><br><button class="btn btn-mini btn-danger del_img">删除</button><input name="rpt[]" type="hidden" value="'.$v['id'].'"></li>';
+											echo '<li><img class="dashboard-avatar" alt="" style="width:auto" src="'.$v['thumbimg'].'"><strong>文件名:</strong> <a href="' .$v['img']. '" target="_blank"/> 点击查看 </a><br><strong>描&nbsp;&nbsp;&nbsp;述:</strong> <input name="rpt_desc[]" type="text" value="'.$v['desc'].'" style="height:12px"/><br><button class="btn btn-mini btn-danger del_img">删除</button><input name="rpt[]" type="hidden" value="'.$v['id'].'"></li>';
 										}
 									}
 									?>
