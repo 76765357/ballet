@@ -16,6 +16,7 @@ if($id > 0){
 		$img = get_img_from_db($result['img_id']);
 		$data['avatar'] = $result['img_id'];
 		$data['avatar_src'] = get_full_url().NEWS_RES_THUMB.$img['file'];
+		$data['avatar_ori_src'] = get_full_url().NEWS_RES.$img['file'];
 		$data['multi_image'] = get_imgs($id,$type);
 		$data = array_merge($data,$result);
 	}

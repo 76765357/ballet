@@ -24,7 +24,8 @@ if($id > 0){
 		$data['rpt_select'] = get_rpt_select($prs);
 		$img = get_img_from_db($result['img_id']);
 		$data['avatar'] = $result['img_id'];
-		$data['avatar_src'] = PFM_RES_THUMB.'/'.$img['file'];
+		$data['avatar_src'] = PFM_RES_THUMB.$img['file'];
+		$data['avatar_ori_src'] = PFM_RES.$img['file'];
 		$data['multi_image'] = get_imgs($id,$type);
 		$data = array_merge($data,$result);
 	}

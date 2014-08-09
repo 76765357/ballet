@@ -13,6 +13,7 @@ $(function () {
     $('.del_img').live('click',function(){
         $(this).parent('li').remove();
     });
+
     $('#avatar_upload').fileupload({
         dataType: 'json',
         done: function (e, data) {
@@ -21,11 +22,55 @@ $(function () {
                 $.each(data.result.files, function (index, file) {
                     $('<img />').attr('src',file.thumbnailUrl).appendTo(t);
                     $('<input name="avatar" type="hidden" />').val(file.id).appendTo(t);
+                    $('#avatar_progress .bar').hide();
                 });
         },
         progressall: function (e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('#avatar_progress .bar').css(
+                    'width',
+                    progress + '%'
+                );
+        }
+    });
+
+    $('#video_upload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+                var t = $("#video_info");
+                t.empty();
+                $.each(data.result.files, function (index, file) {
+                    //$('<img />').attr('src',file.thumbnailUrl).appendTo(t);
+                    $('<strong>视频链接地址: </strong>').appendTo(t);
+                    $('<a target="_blank"> 点击查看</a>').attr('href',file.url).appendTo(t);
+                    $('<br />').appendTo(t);
+                    $('<strong>视频大小:</strong>').appendTo(t);
+                    $('<span> </span>').html(Math.floor(file.size/1024/1024) + 'MB').appendTo(t);
+                    $('<input name="video" type="hidden" />').val(file.id).appendTo(t);
+                });
+        },
+        progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#video_progress .bar').css(
+                    'width',
+                    progress + '%'
+                );
+        }
+    });
+
+    $('#videoimg_upload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+                var t = $("#videoimg_thumbs");
+                t.empty();
+                $.each(data.result.files, function (index, file) {
+                    $('<img />').attr('src',file.thumbnailUrl).appendTo(t);
+                    $('<input name="video_img" type="hidden" />').val(file.name).appendTo(t);
+                });
+        },
+        progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#videoimg_progress .bar').css(
                     'width',
                     progress + '%'
                 );

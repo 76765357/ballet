@@ -17,7 +17,7 @@ if($a == 'actor'){
 	);
 }
 
-//剧照
+//剧目
 if($a == 'rpt'){
 	$options = array(
 		'upload_dir' => dirname(__FILE__) . RPT_RES,
@@ -25,6 +25,7 @@ if($a == 'rpt'){
 	);
 }
 
+//新闻
 if($a == 'news'){
 	$options = array(
 		'upload_dir' => dirname(__FILE__) . NEWS_RES,
@@ -32,6 +33,7 @@ if($a == 'news'){
 	);
 }
 
+//演出
 if($a == 'pfm'){
 	$options = array(
 		'upload_dir' => dirname(__FILE__) . PFM_RES,
@@ -39,6 +41,7 @@ if($a == 'pfm'){
 	);
 }
 
+//剧团
 if($a == 'trp'){
     $options = array(
         'upload_dir' => dirname(__FILE__) . TRP_RES,
@@ -46,12 +49,29 @@ if($a == 'trp'){
     );
 }
 
+//视频
+if($a == 'video'){
+    $options = array(
+        'upload_dir' => dirname(__FILE__) . VIDEO_RES,
+        'upload_url' => get_full_url() . VIDEO_RES
+    );
+}
+
+//视频
+if($a == 'videoimg'){
+    $options = array(
+        'upload_dir' => dirname(__FILE__) . VIDEO_IMG_RES,
+        'upload_url' => get_full_url() . VIDEO_IMG_RES
+    );
+}
+
+
 $options = $options + $base_config;
 class CustomUploadHandler extends UploadHandler {
 
     protected function initialize() {
         global $db;
-	$this->db = $db;
+        $this->db = $db;
         parent::initialize();
         $this->db->close();
     }
@@ -62,9 +82,17 @@ class CustomUploadHandler extends UploadHandler {
             $uploaded_file, $name, $size, $type, $error, $index, $content_range
         );
         if (empty($file->error)) {
-            $data = array('file'=>$file->name);
-            $this->db->insert('image',$data);
-            $file->id = $this->db->insertId();
+            if(strpos($file->type,'video') !== false){
+                $data = array('file'=>$file->name);
+                $this->db->insert('video',$data);
+                $file->id = $this->db->insertId();
+            }else if(strpos($file->type,'image') !== false){
+                $data = array('file'=>$file->name);
+                $this->db->insert('image',$data);
+                $file->id = $this->db->insertId();
+            }else{
+                //非视频或图片文件
+            }
         }
         return $file;
     }

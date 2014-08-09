@@ -6,12 +6,16 @@
 							  </div>
 							  <div class="control-group">
 							  	<label class="control-label" for="textarea2"></label>
-								  <div class="controls" id="avatar_thumbs">
+								  <div class="controls">
                                     <div id="avatar_progress" style="width: 200px;">
                                     <div class="bar" style="width: 0%;"></div></div>
+                                    <div  id="avatar_thumbs">
                                     <?php if($avatar){
                                     	echo '<img src="'.$avatar_src.'"'.' />';
+                                    	
+                                    	echo '<br /><strong>原图链接: </strong><a href="' . $avatar_ori_src . '" target="_blank"> 点击查看</a>';
                     					echo '<input name="avatar" type="hidden" value="'.$avatar.'"/>';
                                     }?>
+                                </div>
 								  </div>
 							  </div>

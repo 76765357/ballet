@@ -54,13 +54,8 @@
 								  <input class="input-xlarge focused" id="focusedInput" name="addr" type="text" value="<?=$addr?>">
 								</div>
 							  </div>
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">剧目视频(可选)</label>
-								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" name="video" type="text" value="">
-								</div>
-							  </div>
-			                    <?php require( dirname( __FILE__ ) . '/form_action.tpl.html'); ?>
+							  <?php require( dirname( __FILE__ ) . '/signle_video_add.tpl.html'); ?>
+			                  <?php require( dirname( __FILE__ ) . '/form_action.tpl.html'); ?>
 							</fieldset>
 						  </form>
 					

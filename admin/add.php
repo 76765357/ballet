@@ -36,6 +36,12 @@ $addr= v('addr');
 //演出包含的剧目
 $rpts = v('rpts');
 
+$vid = v('video');
+$video_title = v('video_title');
+$video_subtitle = v('video_subtitle');
+$video_desc = v('video_desc');
+$video_img = v('video_img');
+
 //根据表名确定插入类型，有的可能要插入多张表
 switch ($tbname):
 	//插入的是演员
@@ -130,6 +136,18 @@ switch ($tbname):
 			}
 		}
 
+		if($vid > 0){
+			$data = array(
+				'title'			=>	$video_title,
+				'subtitle'		=>	$video_subtitle,
+				'description'	=>	$video_desc,
+				'image'			=>	$video_img
+			);
+			$db->update('video',$data,"id={$vid}");
+			$data = array('vid' => $vid);
+			$db->update($tbname,$data,"id={$aid}");
+		}
+
         break;
      case 'performance':
 		$data = array(
@@ -201,11 +219,13 @@ switch ($tbname):
     default:
         echo "wrong add";
 endswitch;
-
+$db->close();
+ajax_json(array('status'=>0,'msg'=>'success'));
+exit;
 if($db->affectedRows() > 0){
 	ajax_json(array('status'=>0,'msg'=>'success'));
 }else{
 	ajax_json(array('status'=>1,'msg'=>'failed'));
 }
 
-$db->close();
+
