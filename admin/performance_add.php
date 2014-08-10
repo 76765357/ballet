@@ -27,10 +27,16 @@ if($id > 0){
 		$data['avatar_src'] = PFM_RES_THUMB.$img['file'];
 		$data['avatar_ori_src'] = PFM_RES.$img['file'];
 		$data['multi_image'] = get_imgs($id,$type);
+
+		if($result['vid'] > 0){
+			$vdata = output_video_data($result['vid']);
+			$data = array_merge($data,$vdata);
+		}
+
 		$data = array_merge($data,$result);
 	}
 }
-
+$db->close();
 render($data,'index');
 
 

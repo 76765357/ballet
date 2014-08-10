@@ -21,4 +21,5 @@ if($id > 0){
 		$data = array_merge($data,$result);
 	}
 }
+$db->close();
 render($data,'index');

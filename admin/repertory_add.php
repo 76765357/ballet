@@ -19,20 +19,12 @@ if($id > 0){
 		$data['multi_image'] = get_imgs($id,$type);
 
 		if($result['vid'] > 0){
-			$vinfo = $db->fetchOne("select * from video where id={$result['vid']}");
-			$data['video']			= $vinfo['id'];
-			$data['video_title'] 	= $vinfo['title'];
-			$data['video_subtitle'] = $vinfo['subtitle'];
-			$data['video_src'] 		= get_full_url() . VIDEO_RES . $vinfo['file'];
-			$data['video_desc'] 	= $vinfo['description'];
-			$data['video_img'] 		= $vinfo['image'];
-			$data['video_img_src']	= get_full_url() . VIDEO_IMG_RES_THUMB . $vinfo['image'];
-			$data['video_img_ori_src']	= get_full_url() . VIDEO_IMG_RES . $vinfo['image'];
+			$vdata = output_video_data($result['vid']);
+			$data = array_merge($data,$vdata);
 		}
 		
 		$data = array_merge($data,$result);
 	}
 }
-
-
+$db->close();
 render($data,'index');

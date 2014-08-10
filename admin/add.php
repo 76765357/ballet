@@ -189,6 +189,19 @@ switch ($tbname):
 				$db->insert('performance_repertory',$data);
 			}
 		}
+		
+		if($vid > 0){
+			$data = array(
+				'title'			=>	$video_title,
+				'subtitle'		=>	$video_subtitle,
+				'description'	=>	$video_desc,
+				'image'			=>	$video_img
+			);
+			$db->update('video',$data,"id={$vid}");
+			$data = array('vid' => $vid);
+			$db->update($tbname,$data,"id={$aid}");
+		}
+		
         break;
     case 'troupe':
 		$data = array(

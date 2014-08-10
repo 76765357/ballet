@@ -580,7 +580,6 @@ function get_imgs($id,$type){
 	return $data;
 }
 
-
 function mark_img_del($id){
 	global $db;
 	return $db->update('image',array('type'=>'10'),"id={$id}");
@@ -594,5 +593,20 @@ function get_rpt_select($selectArr = array()){
         $option .= "<option value='{$v['id']}' {$selected}>{$v['title']}</option>";
     }
     return '<select multiple name="rpts[]" data-rel="chosen">'.$option.'</select>';
+}
+
+function output_video_data($vid){
+	global $db;
+	$vinfo = $db->fetchOne("select * from video where id={$vid}");
+	$data = array();
+	$data['video']			= $vinfo['id'];
+	$data['video_title'] 	= $vinfo['title'];
+	$data['video_subtitle'] = $vinfo['subtitle'];
+	$data['video_src'] 		= get_full_url() . VIDEO_RES . $vinfo['file'];
+	$data['video_desc'] 	= $vinfo['description'];
+	$data['video_img'] 		= $vinfo['image'];
+	$data['video_img_src']	= get_full_url() . VIDEO_IMG_RES_THUMB . $vinfo['image'];
+	$data['video_img_ori_src']	= get_full_url() . VIDEO_IMG_RES . $vinfo['image'];
+	return $data;
 }
 ?>
