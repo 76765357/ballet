@@ -21,3 +21,8 @@ define('PFM_RES_THUMB', '/../attachment/img/performance/thumbnail/');
 
 define('TRP_RES', '/../attachment/img/troupe/');
 define('TRP_RES_THUMB', '/../attachment/img/troupe/thumbnail/');
+
+define('VIDEO_IMG_RES', '/../attachment/img/video/');
+define('VIDEO_IMG_RES_THUMB', '/../attachment/img/video/thumbnail/');
+
+define('VIDEO_RES', '/../attachment/video/');
