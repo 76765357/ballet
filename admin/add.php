@@ -41,7 +41,7 @@ $video_title = v('video_title');
 $video_subtitle = v('video_subtitle');
 $video_desc = v('video_desc');
 $video_img = v('video_img');
-
+$rec = v('rec');
 //根据表名确定插入类型，有的可能要插入多张表
 switch ($tbname):
 	//插入的是演员
@@ -229,6 +229,20 @@ switch ($tbname):
 		}
 
         break;
+    case 'recommend':
+    	
+    	$result = $db->fetchOne("select * from recommend where rid={$vid} and cid=2");
+    	if(!$result){
+    		$data = array('rid'=> $vid,'cid'=> 2,'type'=>$rec);
+    		$db->insert($tbname,$data);
+    	}else{
+    		//0不推荐1推荐2主推荐
+    		$data = array('type'=>$rec);
+    		$db->update($tbname, $data, "rid={$vid} and cid=2");
+    	}
+    	
+
+    	break;
     default:
         echo "wrong add";
 endswitch;

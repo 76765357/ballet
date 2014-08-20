@@ -152,12 +152,12 @@ function docReady(){
 	$('[rel="popover"],[data-rel="popover"]').popover();
 
 	//file manager
-	var elf = $('.file-manager').elfinder({
-		url : 'misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
-	}).elfinder('instance');
+	//var elf = $('.file-manager').elfinder({
+	//	url : 'misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
+	//}).elfinder('instance');
 
 	//iOS / iPhone style toggle switch
-	$('.iphone-toggle').iphoneStyle();
+	//$('.iphone-toggle').iphoneStyle();
 
 	//star rating
 	$('.raty').raty({
