@@ -5,6 +5,7 @@
 								  <th>标题</th>
 								  <th>子标题</th>
 								  <th>描述</th>
+								  <th>推荐状态</th>
 								  <th>操作</th>
 							  </tr>
 						  </thead>
@@ -17,24 +18,33 @@ foreach($result as $k=>$v){
 						<td title="<?=$v['title']?>"><?= cutstr($v['title'],60,'...') ?></td>
 						<td><?=$v['subtitle']?></td>
 						<td><p><?=$v['description']?></p></td>
-						<td class="center">
+						
 							<?php
 							if($v['type'] == 1){?>
+							<td class="center"><span class="label label-warning">推荐</span></td>
+							<td class="center">
 								<a class="btn btn-info set_recom" data-value='0' href="#<?=$v['id']?>">取消推荐</a>
 								<a class="btn btn-warning set_recom" data-value='2' href="#<?=$v['id']?>">设为主推荐</a>
+							</td>
 							<?php 
 							}elseif($v['type'] == 2){?>
+							<td class="center"><span class="label label-warning">主推荐</span></td>
+							<td class="center">
 								<a class="btn btn-warning set_recom" data-value='1' href="#<?=$v['id']?>">设为推荐</a>
 								<a class="btn btn-info set_recom" data-value='0' href="#<?=$v['id']?>">取消主推荐</a>
+							</td>
 							<?php 
 							}else{?>
+							<td class="center"><span class="label label-info">没有推荐</span></td>
+							<td class="center">
 								<a class="btn btn-warning set_recom" data-value='1' href="#<?=$v['id']?>">设为推荐</a>
 								<a class="btn btn-warning set_recom" data-value='2' href="#<?=$v['id']?>">设为主推荐</a>
+							</td>
 							<?php 
 							}?>
 							
 							
-						</td>
+						
 					</tr>
 		<?php
 }
