@@ -1,14 +1,14 @@
 <?php
 header("Content-type:application/json");
+
 include_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."init.php";
 include_once dirname(__FILE__).DIRECTORY_SEPARATOR."conf.php";
-$pagesize=20;
+$pagesize=15;
 $new_img_base_dir="attachment/img/news".DIRECTORY_SEPARATOR;
 $performance_img_base_dir="attachment/img/performance".DIRECTORY_SEPARATOR;
 $repertory_img_base_dir="attachment/img/repertory".DIRECTORY_SEPARATOR;
 $video_img_base_dir="attachment/img/video".DIRECTORY_SEPARATOR;
 //数据库用法参考 DB.class.php
-
 if($_GET['page']>1)
 {
     $page=$_GET['page'];
@@ -17,8 +17,7 @@ if($_GET['page']>1)
 }
 
 $total_info = $db->fetchOne("select count(1) as total from recommend where type=1;");
-$total=$total_info['total'];
-
+$total=ceil($total_info['total']/$pagesize);
 
 
 $p_recommend=$db->fetchAll("select * from recommend where type=2;");
@@ -78,6 +77,7 @@ $p_recommend_list=array();
 if($p_news)
 foreach($p_news as $v)
 {
+    if(!$v) continue;
     $recommend=array();
     $recommend['category']=1;
     $recommend['id']=$v['id'];
@@ -97,6 +97,7 @@ foreach($p_news as $v)
 if($p_performance)
 foreach($p_performance as $v)
 {
+    if(!$v) continue;
     $recommend=array();
     $recommend['category']=3;
     $recommend['id']=$v['id'];
@@ -116,6 +117,7 @@ foreach($p_performance as $v)
 if($p_repertory)
 foreach($p_repertory as $v)
 {
+    if(!$v) continue;
     $recommend=array();
     $recommend['category']=4;
     $recommend['id']=$v['id'];
@@ -134,6 +136,7 @@ foreach($p_repertory as $v)
 if($p_video)
 foreach($p_video as $v)
 {
+    if(!$v) continue;
     $recommend=array();
     $recommend['category']=2;
     $recommend['id']=$v['id'];
@@ -156,6 +159,7 @@ foreach($p_video as $v)
 if($news)
 foreach($news as $v)
 {
+    if(!$v) continue;
     $recommend=array();
     $recommend['category']=1;
     $recommend['id']=$v['id'];
@@ -172,8 +176,9 @@ foreach($news as $v)
 }
 
 if($performance)
-foreach($p_performance as $v)
+foreach($performance as $v)
 {
+    if(!$v) continue;
     $recommend=array();
     $recommend['category']=3;
     $recommend['id']=$v['id'];
@@ -193,6 +198,7 @@ foreach($p_performance as $v)
 if($repertory)
 foreach($repertory as $v)
 {
+    if(!$v) continue;
     $recommend=array();
     $recommend['category']=4;
     $recommend['id']=$v['id'];
@@ -211,6 +217,7 @@ foreach($repertory as $v)
 if($video)
 foreach($video as $v)
 {
+    if(!$v) continue;
     $recommend=array();
     $recommend['category']=2;
     $recommend['id']=$v['id'];
@@ -234,3 +241,4 @@ $result['success']='ture';
 echo json_encode($result);
 #$actor = $db->query("show create table actor;");
 #var_dump($actor);
+

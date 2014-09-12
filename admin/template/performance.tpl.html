@@ -5,6 +5,8 @@
 								  <th>标题</th>
 								  <th>类别</th>
 								  <th>子标题</th>
+                                  <th>推荐状态</th>
+                                  <th>推荐管理</th>
 								  <th>操作</th>
 							  </tr>
 						  </thead>
@@ -16,6 +18,29 @@ foreach($result as $k=>$v){
 						<td title="<?=$v['title']?>"><?= cutstr($v['title'],60,'...') ?></td>
 						<td class="center"><?=$news_cate[$v['cate_id']]['name']?></td>
 						<td><?=$v['subtitle']?></td>
+                            <?php
+                            if($v['type'] == 1){?>
+                            <td class="center"><span class="label label-warning">推荐</span></td>
+                            <td class="center">
+                                <a class="btn btn-info set_recom" data-value='0' href="#<?=$v['id']?>">取消推荐</a>
+                                <a class="btn btn-warning set_recom" data-value='2' href="#<?=$v['id']?>">设为主推荐</a>
+                            </td>
+                            <?php 
+                            }elseif($v['type'] == 2){?>
+                            <td class="center"><span class="label label-warning">主推荐</span></td>
+                            <td class="center">
+                                <a class="btn btn-warning set_recom" data-value='1' href="#<?=$v['id']?>">设为推荐</a>
+                                <a class="btn btn-info set_recom" data-value='0' href="#<?=$v['id']?>">取消主推荐</a>
+                            </td>
+                            <?php 
+                            }else{?>
+                            <td class="center"><span class="label label-info">没有推荐</span></td>
+                            <td class="center">
+                                <a class="btn btn-warning set_recom" data-value='1' href="#<?=$v['id']?>">设为推荐</a>
+                                <a class="btn btn-warning set_recom" data-value='2' href="#<?=$v['id']?>">设为主推荐</a>
+                            </td>
+                            <?php 
+                            }?>
 						<td class="center">
 							<a class="btn btn-info" href="performance_add.php?id=<?=$v['id']?>"><i class="icon-edit icon-white"></i>编辑</a>
 							<a class="btn btn-danger del" data-id="<?=$v['id']?>" href="#"><i class="icon-trash icon-white"></i>删除</a>
@@ -26,3 +51,17 @@ foreach($result as $k=>$v){
 ?>
 	</tbody>
 </table>
+<script type="text/javascript">
+$(function () {
+    $(".set_recom").click(function(){
+        var vid = $(this).attr('href').split('#')[1];
+        var rec = $(this).attr('data-value');
+        $.getJSON('add.php?tbname=recommend&rcid=3&rec='+rec+'&rid='+vid,function(data){
+            if(data.status == 0){
+                alert('设置成功');
+                window.location.reload();
+            }
+        });
+    })
+});
+</script>

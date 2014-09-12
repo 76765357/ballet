@@ -32,7 +32,7 @@ if($troupeinfo)
 
 	}
     $result['result']['images']=$image_list;
-	$result['result']['introduce']=$troupeinfo['content'];
+	$result['result']['introduce']=strip_tags($troupeinfo['content']);
 
 	$result['success']='ture';
 }else{

@@ -5,7 +5,7 @@ include_once dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."init.php";
 include_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."conf.php";
 $actor_img_base_dir="attachment/img/actor".DIRECTORY_SEPARATOR;
 
-$actorlist_sql="select a.id,a.name,b.name as catename,c.file from actor a , actor_cate b , image c where a.cid =b.id and a.bigavatar=c.id ";
+$actorlist_sql="select a.id,a.name,b.name as catename,c.file from actor a , actor_cate b , image c where a.cid =b.id and a.avatar=c.id ";
 
 $actorlist = $db->fetchAll($actorlist_sql);
 #print_r($actorlist);

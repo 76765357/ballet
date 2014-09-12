@@ -1,5 +1,5 @@
 $(function () {
-	$(".del").click(function(e){
+	$(".del").live('click',function(e){
 		var c = window.confirm('确定删除？');
 		if(c){
 			e.preventDefault();

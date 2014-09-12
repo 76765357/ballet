@@ -54,6 +54,23 @@
 								  <input class="input-xlarge focused" id="focusedInput" name="addr" type="text" value="<?=$addr?>">
 								</div>
 							  </div>
+
+                             <div class="control-group">
+                                <label class="control-label" >是否保留剧目</label>
+                                <div class="controls">
+
+                                  <label class="radio">
+                                    <input type="radio" name="reserve" value="1" <?php if($reserve == 1) echo 'checked'?>>
+                                    是  
+                                  </label>
+                                  <div style="clear:both"></div>
+                                  <label class="radio">
+                                    <input type="radio" name="reserve" value="0" <?php if($reserve == 0) echo 'checked'?>>
+                                    否  
+                                  </label>
+                                </div>    
+                            </div>
+
 							  <?php require( dirname( __FILE__ ) . '/signle_video_add.tpl.html'); ?>
 			                  <?php require( dirname( __FILE__ ) . '/form_action.tpl.html'); ?>
 							</fieldset>

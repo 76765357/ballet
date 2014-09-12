@@ -56,7 +56,7 @@ $(function () {
 	$(".set_recom").click(function(){
 		var vid = $(this).attr('href').split('#')[1];
 		var rec = $(this).attr('data-value');
-	    $.getJSON('add.php?tbname=recommend&rec='+rec+'&video='+vid,function(data){
+	    $.getJSON('add.php?tbname=recommend&rcid=2&rec='+rec+'&rid='+vid,function(data){
 	    	if(data.status == 0){
 	    		alert('设置成功');
 	    		window.location.reload();

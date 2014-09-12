@@ -17,6 +17,8 @@ $name	= v('name');
 $cid = v('cid');
 //头像和头像描述
 $avatar = v('avatar');
+//演员职称，两三行
+$profess =v('profess');
 $avatar_desc = v('avatar_desc');
 //大段文字说明
 $desc	= (v('desc'));
@@ -26,6 +28,12 @@ $rpt	= v('rpt');
 $rpt_desc	= v('rpt_desc');
 //是否为推荐 1：推荐 0：不推荐
 $recommend = v('recommend');
+//是否为保留剧目 1：保留 0：非保留
+$reserve=v('reserve');
+//推荐类别，1：新闻，2：视频 3：演出  4：剧目
+$rcid=v('rcid');
+//推荐id
+$rid=v('rid');
 //标题
 $title = v('title');
 $subtitle = v('subtitle');
@@ -52,6 +60,7 @@ switch ($tbname):
 			"desc" 		=> $desc,
 			"cid" 		=> $cid,
 			"recommend" => $recommend,
+			"profess"	=> $profess,
 		);
 		if($id > 0){
 			//do update
@@ -114,6 +123,7 @@ switch ($tbname):
 			"price" 		=> $price,
 			"phone" 		=> $phone,
 			"addr" 			=> $addr,
+			"reserve"		=> $reserve,
 		);
 		if($id > 0){
 			//do update
@@ -231,14 +241,14 @@ switch ($tbname):
         break;
     case 'recommend':
     	
-    	$result = $db->fetchOne("select * from recommend where rid={$vid} and cid=2");
+    	$result = $db->fetchOne("select * from recommend where rid={$rid} and cid={$rcid}");
     	if(!$result){
-    		$data = array('rid'=> $vid,'cid'=> 2,'type'=>$rec);
+    		$data = array('rid'=> $rid,'cid'=> $rcid,'type'=>$rec);
     		$db->insert($tbname,$data);
     	}else{
     		//0不推荐1推荐2主推荐
     		$data = array('type'=>$rec);
-    		$db->update($tbname, $data, "rid={$vid} and cid=2");
+    		$db->update($tbname, $data, "rid={$rid} and cid={$rcid}");
     	}
     	
 

@@ -41,7 +41,8 @@ if($actorinfo)
 		$image_list[]=$image_info;
 
 	}
-	$result['result']['actortitle']=$actorinfo['catename'];
+	#$result['result']['actortitle']=$actorinfo['catename'];
+	$result['result']['actortitle']=$actorinfo['profess'];
 	if($actorinfo['file'])
 	{
 		$result['result']['avatar']=SITE_URL.$actor_img_base_dir.$actorinfo['file'];

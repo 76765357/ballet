@@ -3,7 +3,7 @@ header("Content-type:application/json");
 //获取新闻列表接口
 include_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."init.php";
 include_once dirname(__FILE__).DIRECTORY_SEPARATOR."conf.php";
-$pagesize=20;
+$pagesize=15;
 $new_img_base_dir="attachment/img/news".DIRECTORY_SEPARATOR;
 @$_GET['page']=intval($_GET['page']);
 if($_GET['page']>1)
@@ -21,7 +21,7 @@ if($total>$page*$pagesize)
 }else{
 	$other_total=0;
 }
-$other_total=$total;//需求改了，旧需求没删
+$other_total=ceil($total/$pagesize);//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
 $newslist_sql="select a.id,a.cate_id,a.title,b.file from news a left join image b on a.img_id =b.id limit $start,$pagesize";
 

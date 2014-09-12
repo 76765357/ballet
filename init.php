@@ -25,6 +25,10 @@ include dirname(__FILE__) . DS .'config.php';
 include dirname(__FILE__) . DS .'class/Mysql.class.php';
 include dirname(__FILE__) . DS .'class/DB.class.php';
 
+if(preg_match('/admin/',$_SERVER['REQUEST_URI']) and !preg_match('/login_sub/',$_SERVER['REQUEST_URI']))
+{
+    include dirname(__FILE__) . DS .'core/login.inc.php';
+}
 $_GET = transcribe( $_GET );
 $_POST = transcribe( $_POST );
 $_REQUEST = transcribe( $_REQUEST );
