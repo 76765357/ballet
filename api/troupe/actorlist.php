@@ -23,6 +23,7 @@ if($c_actorlist)
 	foreach($c_actorlist as $k => $v)
 	{
 		$c_cator_info=array();
+		$actors_list=array();
 		foreach($v as $vv)
 		{
 			$actor_info=array();
