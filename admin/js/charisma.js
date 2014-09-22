@@ -127,6 +127,10 @@ function docReady(){
 	$('#myTab a').click(function (e) {
 	  e.preventDefault();
 	  $(this).tab('show');
+		var href = $("#myTab li[class='active'] a").attr('href');
+		if($("input[name='video_type']")){
+			$("input[name='video_type']").val(href);
+		}
 	});
 
 	//makes elements soratble, elements that sort need to have id attribute to save the result

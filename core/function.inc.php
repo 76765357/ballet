@@ -609,4 +609,16 @@ function output_video_data($vid){
 	$data['video_img_ori_src']	= get_full_url() . VIDEO_IMG_RES . $vinfo['image'];
 	return $data;
 }
+
+function output_video_list(){
+	global $db;
+	$sql = "select * from video";
+	$result = $db->fetchAll($sql);
+	foreach ($result as $key => $value) {
+		$type = $db->fetchSclare("select type from recommend where cid=2 and rid=".$value['id']);
+		$result[$key]['type'] = $type;
+	}
+	return $result;
+}
 ?>
+

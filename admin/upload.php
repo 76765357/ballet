@@ -82,16 +82,18 @@ class CustomUploadHandler extends UploadHandler {
             $uploaded_file, $name, $size, $type, $error, $index, $content_range
         );
         if (empty($file->error)) {
-            if(strpos($file->type,'video') !== false){
+            /*if(strpos($file->type,'video') !== false || strpos($file->type,'stream') !== false)){
                 $data = array('file'=>$file->name);
                 $this->db->insert('video',$data);
                 $file->id = $this->db->insertId();
-            }else if(strpos($file->type,'image') !== false){
+            }else */if(strpos($file->type,'image') !== false){
                 $data = array('file'=>$file->name);
                 $this->db->insert('image',$data);
                 $file->id = $this->db->insertId();
             }else{
-                //非视频或图片文件
+                $data = array('file'=>$file->name);
+                $this->db->insert('video',$data);
+                $file->id = $this->db->insertId();
             }
         }
         return $file;
