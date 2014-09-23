@@ -23,11 +23,11 @@ if($total>$page*$pagesize)
 }
 $other_total=ceil($total/$pagesize);;//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
-$performancelist_sql="select a.id,a.title,b.file from performance a left join image b on a.img_id =b.id limit $start,$pagesize";
+$performancelist_sql="select a.id,a.title,b.file from performance a left join image b on a.img_id =b.id order by a.id desc limit $start,$pagesize";
 
 if($year)
 {
-	$performancelist_sql="select a.id,a.title,b.file from performance a left join image b on a.img_id =b.id where a.time like '%$year%' limit $start,$pagesize";
+	$performancelist_sql="select a.id,a.title,b.file from performance a left join image b on a.img_id =b.id where a.time like '%$year%' order by a.id desc limit $start,$pagesize";
 }
 
 $performancelist = $db->fetchAll($performancelist_sql);

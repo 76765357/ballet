@@ -22,7 +22,7 @@ if($total>$page*$pagesize)
 }
 $other_total=$total;//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
-$repertorylist_sql="select a.id,a.title,b.file from repertory a left join image b on a.img_id =b.id limit $start,$pagesize";
+$repertorylist_sql="select a.id,a.title,b.file from repertory a left join image b on a.img_id =b.id order by a.id desc limit $start,$pagesize";
 
 $repertorylist = $db->fetchAll($repertorylist_sql);
 $result=array();

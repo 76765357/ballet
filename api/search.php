@@ -72,7 +72,7 @@ case "actor":
     break;
 
 case "repertory":
-    $repertorylist_sql="select a.id,a.title,b.file from repertory a left join image b on a.img_id =b.id and a.title like '$keyword'";
+    $repertorylist_sql="select a.id,a.title,b.file from repertory a left join image b on a.img_id =b.id and a.title like '$keyword' order by a.id desc";
 
     $repertorylist = $db->fetchAll($repertorylist_sql);
     $result=array();
@@ -104,7 +104,7 @@ case "repertory":
 
     break;
 case "performance":
-$performancelist_sql="select a.id,a.title,b.file from performance a left join image b on a.img_id =b.id and a.title like '$keyword'";
+$performancelist_sql="select a.id,a.title,b.file from performance a left join image b on a.img_id =b.id and a.title like '$keyword' order by a.id desc";
 
     $performancelist = $db->fetchAll($performancelist_sql);
     $result=array();

@@ -23,7 +23,7 @@ if($total>$page*$pagesize)
 }
 $other_total=ceil($total/$pagesize);//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
-$newslist_sql="select a.id,a.cate_id,a.title,b.file from news a left join image b on a.img_id =b.id limit $start,$pagesize";
+$newslist_sql="select a.id,a.cate_id,a.title,b.file from news a left join image b on a.img_id =b.id order by a.id desc limit $start,$pagesize";
 
 $newslist = $db->fetchAll($newslist_sql);
 $result=array();

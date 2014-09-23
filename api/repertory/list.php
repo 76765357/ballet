@@ -31,14 +31,14 @@ $start=($page-1)*$pagesize;
 if($reserve==1)
 {
 	if($year)
-		$repertorylist_sql="select a.id,a.title,b.file from repertory a , image b where a.img_id =b.id and a.reserve=1 where a.time like '%$year%' limit $start,$pagesize";
+		$repertorylist_sql="select a.id,a.title,b.file from repertory a , image b where a.img_id =b.id and a.reserve=1 where a.time like '%$year%' order by a.id desc limit $start,$pagesize";
 	else
-		$repertorylist_sql="select a.id,a.title,b.file from repertory a , image b where a.img_id =b.id and a.reserve=1 limit $start,$pagesize";
+		$repertorylist_sql="select a.id,a.title,b.file from repertory a , image b where a.img_id =b.id and a.reserve=1 order by a.id desc limit $start,$pagesize";
 }else{
 	if($year)
-		$repertorylist_sql="select a.id,a.title,b.file from repertory a left join image b on a.img_id =b.id where a.time like '%$year%' limit $start,$pagesize";
+		$repertorylist_sql="select a.id,a.title,b.file from repertory a left join image b on a.img_id =b.id where a.time like '%$year%' order by a.id desc limit $start,$pagesize";
 	else
-		$repertorylist_sql="select a.id,a.title,b.file from repertory a left join image b on a.img_id =b.id limit $start,$pagesize";
+		$repertorylist_sql="select a.id,a.title,b.file from repertory a left join image b on a.img_id =b.id order by a.id desc limit $start,$pagesize";
 }
 #print $repertorylist_sql;
 $repertorylist = $db->fetchAll($repertorylist_sql);

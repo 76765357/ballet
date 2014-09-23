@@ -48,8 +48,11 @@ $(function () {
                     $('<span> </span>').html(Math.floor(file.size/1024/1024) + 'MB').appendTo(t);
                     $('<input name="video" type="hidden" />').val(file.id).appendTo(t);
                 });
+		alert('上传成功!');
+		$("#progressDiv").addClass('hide');
         },
         progressall: function (e, data) {
+		$("#progressDiv").removeClass('hide');
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('#video_progress .bar').css(
                     'width',

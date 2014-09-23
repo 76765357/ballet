@@ -14,8 +14,8 @@ if($id > 0){
 	if($result){
 		$data['actor_cate_select'] = get_actor_cate_select($result['cid']);
 		$img = get_img_from_db($result['avatar']);
-		$data['avatar_src'] = ACTOR_RES_THUMB.$img['file'];
-		$data['avatar_ori_src'] = ACTOR_RES.$img['file'];
+		$data['avatar_src'] = get_full_url() . ACTOR_RES_THUMB.$img['file'];
+		$data['avatar_ori_src'] = get_full_url() . ACTOR_RES.$img['file'];
 		$data['multi_image'] = get_imgs($id,'act');
 		$data = array_merge($data,$result);
 	}

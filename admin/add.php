@@ -44,7 +44,14 @@ $addr= v('addr');
 //演出包含的剧目
 $rpts = v('rpts');
 
-$vid = v('video');
+$video_type = v('video_type');
+if($video_type=='#select'){
+	$vid = v('videoid');
+}
+if($video_type=='#upload'){
+	$vid = v('video');
+}
+
 $video_title = v('video_title');
 $video_subtitle = v('video_subtitle');
 $video_desc = v('video_desc');

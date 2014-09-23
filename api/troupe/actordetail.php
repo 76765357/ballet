@@ -15,7 +15,7 @@ if(!is_numeric($_GET['actorid']))
      
 $actorid=$_GET['actorid'];
 
-$actorinfo_sql="select a.*,b.name as catename,c.file from actor a , actor_cate b , image c  where a.id =$actorid and a.cid =b.id and a.bigavatar=c.id";
+$actorinfo_sql="select a.*,b.name as catename,c.file from actor a , actor_cate b , image c  where a.id =$actorid and a.cid =b.id and a.avatar=c.id";
 
 $actorinfo = $db->fetchOne($actorinfo_sql);
 #print_r($actorinfo);

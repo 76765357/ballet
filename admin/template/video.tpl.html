@@ -14,7 +14,7 @@
 foreach($result as $k=>$v){
 ?>
 <tr>
-						<td><img class="center" src="<?=VIDEO_IMG_RES_THUMB.$v['image']?>" /></td>
+						<td><img class="center" src="<?=get_full_url() . VIDEO_IMG_RES_THUMB.$v['image']?>" /></td>
 						<td title="<?=$v['title']?>"><?= cutstr($v['title'],60,'...') ?></td>
 						<td><?=$v['subtitle']?></td>
 						<td><p><?=$v['description']?></p></td>

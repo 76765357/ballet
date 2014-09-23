@@ -16,7 +16,7 @@ if($_GET['page']>1)
 
 
 
-$videolist_sql="select video.*,recommend.type from video,recommend where recommend.cid=2 and recommend.rid=video.id and type =2";
+$videolist_sql="select video.*,recommend.type from video,recommend where recommend.cid=2 and recommend.rid=video.id and type =2 order by video.id desc";
 
 $videolist = $db->fetchAll($videolist_sql);
 $id_str="";
@@ -30,7 +30,7 @@ $total_info = $db->fetchOne("select count(1) as total from video where id not in
 $total=ceil($total_info['total']/$pagesize);
 
 $start=($page-1)*$pagesize;
-$others_sql="select * from video where id not in $id_str limit $start ,$pagesize";
+$others_sql="select * from video where id not in $id_str order by id desc limit $start ,$pagesize";
 $others_list = $db->fetchAll($others_sql);
 
 

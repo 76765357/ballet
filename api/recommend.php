@@ -20,11 +20,11 @@ $total_info = $db->fetchOne("select count(1) as total from recommend where type=
 $total=ceil($total_info['total']/$pagesize);
 
 
-$p_recommend=$db->fetchAll("select * from recommend where type=2;");
+$p_recommend=$db->fetchAll("select * from recommend where type=2 order by cid,rid desc;");
 
 
 $start=($page-1)*$pagesize;
-$recommend=$db->fetchAll("select * from recommend where type=1 limit $start,$pagesize;");
+$recommend=$db->fetchAll("select * from recommend where type=1 order by cid,rid desc limit $start,$pagesize;");
 
 
 foreach($p_recommend as $v)
