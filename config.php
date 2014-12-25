@@ -13,6 +13,9 @@ define('ACTOR_RES_THUMB', '/../attachment/img/actor/thumbnail/');
 define('RPT_RES',	'/../attachment/img/repertory/');
 define('RPT_RES_THUMB',	'/../attachment/img/repertory/thumbnail/');
 
+define('SCHE_RES',	'/../attachment/img/sche/');
+define('SCHE_RES_THUMB',	'/../attachment/img/sche/thumbnail/');
+
 define('NEWS_RES', '/../attachment/img/news/');
 define('NEWS_RES_THUMB', '/../attachment/img/news/thumbnail/');
 

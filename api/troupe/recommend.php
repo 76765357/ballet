@@ -6,7 +6,9 @@ include_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."conf.php";
 $actor_img_base_dir="attachment/img/actor".DIRECTORY_SEPARATOR;
 
 
-$actorinfo_sql="select a.*,c.file from actor a , image c  where a.recommend =1  and a.bigavatar=c.id";
+$actorinfo_sql="select a.*,c.file from actor a , image c  where a.recommend =1  and a.avatar=c.id";
+#$actorinfo_sql="select a.*,c.file from actor a left join image c  on a.bigavatar=c.id where a.recommend =1";
+
 
 $actorinfo = $db->fetchAll($actorinfo_sql);
 if($actorinfo)
@@ -23,6 +25,7 @@ if($actorinfo)
 		}
 		$actorarr['id']=$v['id'];
 		$actorarr['name']=$v['name'];
+		$actorarr['des']=$v['recom_reason'];
 		
 		$actor_list[]=$actorarr;
 

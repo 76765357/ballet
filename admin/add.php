@@ -38,11 +38,21 @@ $rid=v('rid');
 $title = v('title');
 $subtitle = v('subtitle');
 $time= v('time');
+$start_date = v('start_date');
+$end_date= v('end_date');
+$add_time= v('add_time');
 $price= v('price');
 $phone= v('phone');
 $addr= v('addr');
 //演出包含的剧目
 $rpts = v('rpts');
+
+//场次
+$nop = v('nop');
+
+$recom_reason= v('recom_reason');
+//单个剧目id
+$rpt_id= v('rpt_id');
 
 $video_type = v('video_type');
 if($video_type=='#select'){
@@ -67,6 +77,7 @@ switch ($tbname):
 			"desc" 		=> $desc,
 			"cid" 		=> $cid,
 			"recommend" => $recommend,
+			"recom_reason"	=>$recom_reason,
 			"profess"	=> $profess,
 		);
 		if($id > 0){
@@ -92,11 +103,12 @@ switch ($tbname):
         break;
     case 'news':
 		$data = array(
-			"title"		   => $title,
+			"title"	   => $title,
 			"subtitle"     => $subtitle,
 			"description"  => $desc,
 			"img_id"    => $avatar,
-			"cate_id" 		=> $cid,
+			"cate_id"	=> $cid,
+			"add_time" 	=> $add_time,
 		);
 		if($id > 0){
 			//do update
@@ -259,6 +271,24 @@ switch ($tbname):
     	}
     	
 
+    	break;
+    case 'schedule':
+		$data = array(
+			"start_date"	=> $start_date,
+			"end_date"	=> $end_date,
+			"addr" 	=> $addr,
+			"rpt_id" => $rpt_id,
+			"nop"	=> $nop,
+			"img_id"    => $avatar,
+		);
+		if($id > 0){
+			//do update
+			$db->update($tbname,$data,"id={$id}");
+			$aid = $id;
+		}else{
+			$db->insert($tbname,$data);
+			$aid = $db->insertId();
+		}
     	break;
     default:
         echo "wrong add";

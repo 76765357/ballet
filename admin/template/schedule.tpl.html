@@ -1,0 +1,32 @@
+<input type="hidden" id="tbname" name="tbname" value="sche" />
+<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th>时间</th>
+								  
+								  <th>地点</th>
+								  <th>剧目</th>
+								  <th>场次</th>
+								  <th>操作</th>
+							  </tr>
+						  </thead>
+<tbody>
+<?php
+foreach($result as $k=>$v){
+?>
+<tr>
+						<td><?=$v['start_date']?> - <?=$v['end_date']?></td>
+						
+						<td class="center"><?=$v['addr']?></td>
+						<td class="center"><?=$v['rpt_name']?></td>
+						<td class="center"><?=$v['nop']?></td>
+						<td class="center">
+							<a class="btn btn-info" href="sche_add.php?id=<?=$v['id']?>"><i class="icon-edit icon-white"></i>编辑</a>
+							<a class="btn btn-danger del" data-id="<?=$v['id']?>" href="#"><i class="icon-trash icon-white"></i>删除</a>
+						</td>
+					</tr>
+		<?php
+}
+?>
+	</tbody>
+</table>

@@ -27,6 +27,9 @@ switch ($tbname):
     	$db->delete('performance_image',"pid={$id}");
     	$db->delete('performance_repertory',"pid={$id}");
         break;
+    case 'sche':
+    	$db->delete('schedule',"id={$id}");
+        break;
     default:
         echo "wrong!";
 endswitch;

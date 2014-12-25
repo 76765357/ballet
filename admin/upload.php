@@ -25,6 +25,14 @@ if($a == 'rpt'){
 	);
 }
 
+//日程图片
+if($a == 'sche'){
+	$options = array(
+		'upload_dir' => dirname(__FILE__) . SCHE_RES,
+		'upload_url' => get_full_url() . SCHE_RES
+	);
+}
+
 //新闻
 if($a == 'news'){
 	$options = array(

@@ -1,0 +1,56 @@
+			<div class="row-fluid sortable ui-sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title="">
+						<h2><i class="icon-edit"></i> 添加演出日程</h2>
+					</div>
+					<div class="box-content">
+						<form id="mainform" class="form-horizontal">
+							<input name="tbname" type="hidden" value="schedule">
+							<input name="id" type="hidden" value="<?=$id?>">
+							<fieldset>
+							  <div class="control-group">
+								<label class="control-label" for="startdate">开始时间</label>
+								<div class="controls">
+								  <input class="input-xlarge focused datepicker" id="startdate" name="start_date" type="text" value="<?=$time?>">
+								</div>
+							  </div>
+							 
+							  <div class="control-group">
+								<label class="control-label" for="enddate">结束时间</label>
+								<div class="controls">
+								  <input class="input-xlarge focused datepicker" id="enddate" name="end_date" type="text" value="<?=$time?>">
+								</div>
+							  </div>
+
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">地址</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="focusedInput" name="addr" type="text" value="<?=$addr?>">
+								</div>
+							  </div>
+
+							<div class="control-group">
+								<label class="control-label" for="selectError1">剧目</label>
+								<div class="controls">
+									<?=$rpt_select?>
+								</div>
+								<div class="controls">
+								<a class="btn btn-mini btn-success" href="repertory_add.php">添加剧目?</a>
+								</div>
+						      	</div>
+ 							<div class="control-group">
+								<label class="control-label" for="nop">场次</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="nop" name="nop" type="number" value="<?=$nop?>">
+								</div>
+							 </div>
+
+			                  		<?php require( dirname( __FILE__ ) . '/single_img_add.tpl.html'); ?>
+			                  		<?php require( dirname( __FILE__ ) . '/form_action.tpl.html'); ?>
+							</fieldset>
+						  </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div
