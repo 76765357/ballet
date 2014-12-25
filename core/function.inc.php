@@ -592,7 +592,17 @@ function get_rpt_select($selectArr = array()){
     	$selected = (!empty($selectArr) && in_array($v['id'],$selectArr)) ? 'selected' : '';
         $option .= "<option value='{$v['id']}' {$selected}>{$v['title']}</option>";
     }
-    return '<select multiple name="rpts[]" data-rel="chosen">'.$option.'</select>';
+    return '<select multiple name="rpts[]" data-rel="chosen" data-placeholder="选择剧目,可以选择多个">'.$option.'</select>';
+}
+
+function get_rpt_select_one($selectArr = array()){
+    global $db;
+    $rpt = $db->fetchAll("select * from repertory");
+    foreach($rpt as $k=>$v){
+    	$selected = (!empty($selectArr) && in_array($v['id'],$selectArr)) ? 'selected' : '';
+        $option .= "<option value='{$v['id']}' {$selected}>{$v['title']}</option>";
+    }
+    return '<select name="rpt_id" data-rel="chosen" data-placeholder="选择剧目">'.$option.'</select>';
 }
 
 function output_video_data($vid){

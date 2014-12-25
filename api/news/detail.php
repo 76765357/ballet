@@ -55,7 +55,7 @@ if($newesinfo)
 	$result['result']['detail']['description']=$newesinfo['description'];
 	$result['result']['detail']['images']=$image_list;
 	$result['result']['detail']['title']=$newesinfo['title'];
-    $result['result']['detail']['subtitle']=$newesinfo['subtitle'];
+    $result['result']['detail']['subtitle']= $newesinfo['add_time'].$newesinfo['subtitle'];
 
 	if($video['file'])
 	{

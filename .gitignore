@@ -1,2 +1,15 @@
-.gitignore
-/attachment/
+*.pyc
+log/
+build/
+bin/
+.pydevproject
+.tar
+.zip
+.buildpath
+.project
+.settings/
+.idea
+vendor/
+composer.phar
+composer.lock
+attachment/

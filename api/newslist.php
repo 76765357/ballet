@@ -6,14 +6,35 @@ include_once dirname(__FILE__).DIRECTORY_SEPARATOR."conf.php";
 $pagesize=15;
 $new_img_base_dir="attachment/img/news".DIRECTORY_SEPARATOR;
 @$_GET['page']=intval($_GET['page']);
+@$filter=intval($_GET['filter']);
 if($_GET['page']>1)
 {
 	$page=$_GET['page'];
 }else{
 	$page=1;
 }
+@$filter_now=date('Y-m',time());
 
-$total_info = $db->fetchOne("select count(1) as total from news;");
+$total_sql="select count(1) as total from news";
+
+if($filter==1)
+{
+        $total_sql.=" where cate_id=2";
+}
+if($filter==2)
+{
+        $total_sql.=" where cate_id=5";
+}
+if($filter==4)
+{
+        $total_sql.=" where add_time like '%$filter_now%'";
+}
+
+$total_info = $db->fetchOne($total_sql);
+
+
+
+
 $total=$total_info['total'];
 if($total>$page*$pagesize)
 {
@@ -23,7 +44,24 @@ if($total>$page*$pagesize)
 }
 $other_total=ceil($total/$pagesize);//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
-$newslist_sql="select a.id,a.cate_id,a.title,b.file from news a left join image b on a.img_id =b.id order by a.id desc limit $start,$pagesize";
+$newslist_sql="select a.id,a.cate_id,a.title,b.file from news a left join image b on a.img_id =b.id ";
+
+if($filter==1)
+{
+	$newslist_sql.=" where a.cate_id=2";
+}
+if($filter==2)
+{
+        $newslist_sql.=" where a.cate_id=5";
+}
+if($filter==4)
+{
+        $newslist_sql.=" where a.add_time like '%$filter_now%'";
+}
+
+$newslist_sql.=" order by a.id desc limit $start,$pagesize";
+
+
 
 $newslist = $db->fetchAll($newslist_sql);
 $result=array();

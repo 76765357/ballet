@@ -106,7 +106,7 @@ function docReady(){
 	$('.cleditor').cleditor();
 	
 	//datepicker
-	$('.datepicker').datepicker();
+	$('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
 	
 	//notifications
 	$('.noty').click(function(e){
