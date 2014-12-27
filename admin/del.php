@@ -30,6 +30,9 @@ switch ($tbname):
     case 'sche':
     	$db->delete('schedule',"id={$id}");
         break;
+    case 'message':
+    	$db->delete('message',"id={$id}");
+        break;
     default:
         echo "wrong!";
 endswitch;

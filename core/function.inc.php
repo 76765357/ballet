@@ -630,5 +630,14 @@ function output_video_list(){
 	}
 	return $result;
 }
-?>
 
+function mtok($phone){
+	$tk = sha1('zhongba#123(&'.$phone);
+	$tk = substr($tk,8,6);
+	return $tk;
+}
+
+function markPhone($p){
+	return substr_replace($p,'*****',3,5);
+}
+?>

@@ -4,7 +4,7 @@ $DB_CONCFIG = array(
         'user' => 'root',
         'password' => '123456',
         'database' => 'cnballet',
-    );
+);
 
 
 define('ACTOR_RES', '/../attachment/img/actor/');

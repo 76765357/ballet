@@ -1,0 +1,28 @@
+<input type="hidden" id="tbname" name="tbname" value="audi" />
+<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th>用户头像</th>
+								  <th>用户手机</th>
+								  <th>用户email</th>
+								  <th>用户名</th>
+								  <th>注册时间</th>
+							  </tr>
+						  </thead>
+<tbody>
+<?php
+foreach($result as $k=>$v){
+?>
+<tr>
+
+						<td><img class="dashboard-avatar" alt="" src="<?=$v['avatar']?><"></td>
+						<td><?=$v['phone']?></td>
+						<td><?=$v['email']?></td>
+						<td><?=$v['name']?></td>
+						<td><?=$v['regtime']?></td>
+					</tr>
+		<?php
+}
+?>
+	</tbody>
+</table>
