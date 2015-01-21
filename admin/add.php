@@ -290,6 +290,15 @@ switch ($tbname):
 			$aid = $db->insertId();
 		}
     	break;
+    case 'audi':
+		$data = array(
+			"trust"    => v('trust'),
+		);
+		if($id > 0){
+			//do update
+			$db->update($tbname,$data,"id={$id}");
+		}
+    	break;
     default:
         echo "wrong add";
 endswitch;

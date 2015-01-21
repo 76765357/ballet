@@ -2,6 +2,7 @@
 <table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
+								  <th><label><input type="checkbox" name="selectAll" /> 全选</label></th>
 								  <th>留言内容</th>
 								  <th>时间</th>
 								  <th>用户名</th>
@@ -14,6 +15,7 @@
 foreach($result as $k=>$v){
 ?>
 <tr>
+						<td><input type="checkbox" name="sel[]" value="<?=$v['id']?>" /></td>
 						<td><?=$v['msg']?></td>
 						<td><?=$v['time']?></td>
 						<td><?=$v['uname']?></td>

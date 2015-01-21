@@ -12,16 +12,28 @@ $nav = array(
 #			),
 #		),
 
+		'会员' => array(
+			array(
+			'icon'	=>	'icon-user',
+			'link'	=>	'audi.php',
+			'text'	=>	'会员信息'
+			),
+		),
+
+
+		'留言' => array(
+			array(
+			'icon'	=>	'icon-pencil',
+			'link'	=>	'message.php',
+			'text'	=>	'留言管理'
+			),
+		),
+
 		'新闻' => array(
 			array(
 			'icon'	=>	'icon-plus',
 			'link'	=>	'news_add.php',
 			'text'	=>	'添加新闻'
-			),
-			array(
-			'icon'	=>	'icon-calendar',
-			'link'	=>	'news.php',
-			'text'	=>	'所有新闻'
 			),
 		),
 
@@ -34,16 +46,24 @@ $nav = array(
 		),
 
 
+		'日程' => array(
+			array(
+			'icon'	=>	'icon-plus',
+			'link'	=>	'sche_add.php',
+			'text'	=>	'添加日程'
+			),
+			array(
+			'icon'	=>	'icon-list-alt',
+			'link'	=>	'schedule.php',
+			'text'	=>	'日程管理'
+			),
+		),
+
 		'演员' => array(
 			array(
 			'icon'	=>	'icon-plus',
 			'link'	=>	'actor_add.php',
 			'text'	=>	'添加演员'
-			),
-			array(
-			'icon'	=>	'icon-user',
-			'link'	=>	'actor.php',
-			'text'	=>	'所有演员'
 			),
 		),
 
@@ -73,19 +93,6 @@ $nav = array(
 			),
 		),
 
-		'演出日程' => array(
-			array(
-			'icon'	=>	'icon-plus',
-			'link'	=>	'sche_add.php',
-			'text'	=>	'添加日程'
-			),
-			array(
-			'icon'	=>	'icon-list-alt',
-			'link'	=>	'schedule.php',
-			'text'	=>	'日程管理'
-			),
-		),
-
 		'素材' => array(
 			array(
 			'icon'	=>	'icon-film',
@@ -98,24 +105,23 @@ $nav = array(
 			'text'	=>	'图片管理'
 			),*/
 		),
-
-		'用户' => array(
-			array(
-			'icon'	=>	'icon-user',
-			'link'	=>	'audi.php',
-			'text'	=>	'用户列表'
-			),
-		),
-
-		'留言' => array(
-			array(
-			'icon'	=>	'icon-pencil',
-			'link'	=>	'message.php',
-			'text'	=>	'留言管理'
-			),
-		),
-
 	);
+$actor_cate = get_actor_cate();
+$news_cate = get_news_cate();
+foreach($actor_cate as $k=>$v){
+	array_push($nav['演员'],array(
+		'icon'	=>	'icon-user',
+		'link'	=>	'actor.php?cate='.$k,
+		'text'	=>	$v['name']
+	));
+}
+foreach($news_cate as $k=>$v){
+	array_push($nav['新闻'],array(
+		'icon'	=>	'icon-user',
+		'link'	=>	'news.php?cate='.$k,
+		'text'	=>	$v['name']
+	));
+}
 foreach ($nav as $key=>$value){
 ?>
 

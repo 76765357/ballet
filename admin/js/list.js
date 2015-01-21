@@ -19,4 +19,15 @@ $(function () {
 			});
 		}
 	});
+
+	$("input[name='selectAll']").click(function(){
+		var ck = $(this).attr('checked');
+		$("input[name='sel[]']").each(function(){
+			if(ck == 'checked'){
+				$(this).attr('checked',ck);
+			}else{
+				$(this).attr('checked',false);
+			}	
+		});
+	});
 });

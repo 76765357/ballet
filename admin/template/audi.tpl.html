@@ -7,6 +7,7 @@
 								  <th>用户email</th>
 								  <th>用户名</th>
 								  <th>注册时间</th>
+								  <th>可信用户</th>
 							  </tr>
 						  </thead>
 <tbody>
@@ -20,6 +21,20 @@ foreach($result as $k=>$v){
 						<td><?=$v['email']?></td>
 						<td><?=$v['name']?></td>
 						<td><?=$v['regtime']?></td>
+						<td class="trust">
+							<?php
+								if($v['trust'] == 1){
+									$yes = 'checked';
+									$no = '';
+								}else{
+									$yes = '';
+									$no = 'checked';
+								}
+							?>
+							
+							是<input type="radio" value=1 name="name_<?=$v['id']?>" usrname="<?=$v['name']?>" <?=$yes?>/>
+							否<input type="radio" value=0 name="name_<?=$v['id']?>" usrname="<?=$v['name']?>" <?=$no?>/>
+						</td>
 					</tr>
 		<?php
 }
