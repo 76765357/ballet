@@ -2,7 +2,11 @@
 include_once dirname(__FILE__) . '/../' . 'init.php';
 $cate	= v('cate');
 $data['action'] = 'news';
-$sql = "select * from news where cate_id={$cate} order by id desc";
+if(!$cate){
+	$sql = "select * from news order by id desc";
+}else{
+	$sql = "select * from news where cate_id={$cate} order by id desc";
+}
 $result = $db->fetchAll($sql);
 foreach ($result as $key => $value) {
     # code...

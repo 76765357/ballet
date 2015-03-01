@@ -62,7 +62,7 @@
 					<?php if($video_img){
 					echo '<img src="'.$video_img_src.'"'.' />';
 					echo '<br /><strong>原图链接: </strong><a href="' . $video_img_ori_src . '" target="_blank"> 点击查看</a>';
-							echo '<input name="videoimg" type="hidden" value="'.$video_img.'"/>';
+							echo '<input name="video_img" type="hidden" value="'.$video_img.'"/>';
 					}?>
 				</div>
 			</div>
@@ -86,7 +86,7 @@ foreach($video_list as $k=>$v){
 ?>
 <tr>
 						<td align='center'><?=$v['id']?></td>
-						<td><img class="center" src="<?=VIDEO_IMG_RES_THUMB.$v['image']?>" /></td>
+						<td><img class="center" src=".<?=VIDEO_IMG_RES_THUMB.$v['image']?>" /></td>
 						<td title="<?=$v['title']?>"><?= cutstr($v['title'],60,'...') ?></td>
 						<td><?=$v['subtitle']?></td>
 						<td><p><?=$v['description']?></p></td>
@@ -103,9 +103,15 @@ foreach($video_list as $k=>$v){
 							<?php 
 							}?>
 							<td>
-								  <label class="radio">
-									<input type="radio" name="videoid" value="<?=$v['id']?>" >	
-								  </label>
+								
+				<?php 
+					$checked= '';
+					if($vid == $v['id']){
+						$checked = 'checked';
+					}
+
+				?>
+									<input type="radio" name="videoid" value="<?=$v['id']?>" <?=$checked?>>	
 							</td>
 							
 							

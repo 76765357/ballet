@@ -55,13 +55,6 @@ $recom_reason= v('recom_reason');
 $rpt_id= v('rpt_id');
 
 $video_type = v('video_type');
-if($video_type=='#select'){
-	$vid = v('videoid');
-}
-if($video_type=='#upload'){
-	$vid = v('video');
-}
-
 $video_title = v('video_title');
 $video_subtitle = v('video_subtitle');
 $video_desc = v('video_desc');
@@ -165,18 +158,25 @@ switch ($tbname):
 			}
 		}
 
-		if($vid > 0){
+		if($video_type=='#select'){
+			$vid = v('videoid');
+			$data = array('vid' => $vid);
+			$db->update($tbname,$data,"id={$aid}");
+		}
+
+		if($video_type=='#upload'){
+			$vid = v('video');
 			$data = array(
 				'title'			=>	$video_title,
 				'subtitle'		=>	$video_subtitle,
-				'description'	=>	$video_desc,
+				'description'		=>	$video_desc,
 				'image'			=>	$video_img
 			);
 			$db->update('video',$data,"id={$vid}");
 			$data = array('vid' => $vid);
 			$db->update($tbname,$data,"id={$aid}");
-		}
 
+		}
         break;
      case 'performance':
 		$data = array(
@@ -219,7 +219,27 @@ switch ($tbname):
 			}
 		}
 		
-		if($vid > 0){
+		if($video_type=='#select'){
+			$vid = v('videoid');
+			$data = array('vid' => $vid);
+			$db->update($tbname,$data,"id={$aid}");
+		}
+
+		if($video_type=='#upload'){
+			$vid = v('video');
+			$data = array(
+				'title'			=>	$video_title,
+				'subtitle'		=>	$video_subtitle,
+				'description'		=>	$video_desc,
+				'image'			=>	$video_img
+			);
+			$db->update('video',$data,"id={$vid}");
+			$data = array('vid' => $vid);
+			$db->update($tbname,$data,"id={$aid}");
+
+		}
+
+		/*if($vid > 0){
 			$data = array(
 				'title'			=>	$video_title,
 				'subtitle'		=>	$video_subtitle,
@@ -230,7 +250,7 @@ switch ($tbname):
 			$data = array('vid' => $vid);
 			$db->update($tbname,$data,"id={$aid}");
 		}
-		
+		*/
         break;
     case 'troupe':
 		$data = array(

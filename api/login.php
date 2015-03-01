@@ -21,7 +21,7 @@ if(!$user){
 		'result'=>array(
 				'token'=>$user['token'],
 				'usrinfo'=>array(
-					'avatar'=>$user['token'],
+					'avatar'=>$user['avatar'],
 					'email'=>$user['email'],
 					'id'=>$user['id'],
 					'phone'=>markPhone($user['phone']),
