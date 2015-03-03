@@ -133,6 +133,10 @@ $(function () {
 		
 	});
 
+	if(window.location.pathname.indexOf('theme-config') > 0){
+		$("#seeResult").hide();
+		$("#goonAdd").html('好的');
+	}
 	$("#seeResult").click(function(){
 		window.location.href = $("input[name='tbname']").val() + '.php';
 	});

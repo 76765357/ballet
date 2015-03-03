@@ -24,7 +24,7 @@
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">剧目时间</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" name="time" type="text" value="<?=$time?>">
+								  <input class="input-xlarge focused datepicker" id="focusedInput" name="time" type="text" value="<?=$time?>">
 								</div>
 							  </div>
 							  <div class="control-group">
@@ -70,6 +70,15 @@
                                   </label>
                                 </div>    
                             </div>
+
+					<div class="control-group">
+						<label class="control-label" for="add_des">简短描述</label>
+						<div class="controls">
+						  <input class="input-xlarge focused" id="add_des" name="des" type="text" value="<?=$des?>">
+						</div>
+					  </div>
+
+
 
 							  <?php require( dirname( __FILE__ ) . '/signle_video_add.tpl.html'); ?>
 			                  <?php require( dirname( __FILE__ ) . '/form_action.tpl.html'); ?>

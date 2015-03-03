@@ -22,6 +22,8 @@ $profess =v('profess');
 $avatar_desc = v('avatar_desc');
 //大段文字说明
 $desc	= (v('desc'));
+//描述
+$des	= (v('des'));
 $content	= (v('content'));
 //剧照和剧照描述
 $rpt	= v('rpt');
@@ -72,6 +74,7 @@ switch ($tbname):
 			"recommend" => $recommend,
 			"recom_reason"	=>$recom_reason,
 			"profess"	=> $profess,
+			"des"		=> $des,
 		);
 		if($id > 0){
 			//do update
@@ -101,6 +104,7 @@ switch ($tbname):
 			"description"  => $desc,
 			"img_id"    => $avatar,
 			"cate_id"	=> $cid,
+			"des"		=> $des,
 			"add_time" 	=> $add_time,
 		);
 		if($id > 0){
@@ -136,6 +140,7 @@ switch ($tbname):
 			"phone" 		=> $phone,
 			"addr" 			=> $addr,
 			"reserve"		=> $reserve,
+			"des"		=> $des,
 		);
 		if($id > 0){
 			//do update
@@ -294,12 +299,15 @@ switch ($tbname):
     	break;
     case 'schedule':
 		$data = array(
+			"title"	=> $title,
 			"start_date"	=> $start_date,
 			"end_date"	=> $end_date,
 			"addr" 	=> $addr,
 			"rpt_id" => $rpt_id,
 			"nop"	=> $nop,
 			"img_id"    => $avatar,
+			"phone"		=> $phone,
+			"price"		=> $price,
 		);
 		if($id > 0){
 			//do update
@@ -317,6 +325,17 @@ switch ($tbname):
 		if($id > 0){
 			//do update
 			$db->update($tbname,$data,"id={$id}");
+		}
+    	break;
+    case 'config':
+		if(v('ctype') == 'theme-color'){
+			$data = array(
+				"cvalue"    => v('cvalue'),
+			);
+			if($id > 0){
+				//do update
+				$db->update($tbname,$data,"id=1");
+			}
 		}
     	break;
     default:

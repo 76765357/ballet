@@ -8,17 +8,26 @@
 							<input name="tbname" type="hidden" value="schedule">
 							<input name="id" type="hidden" value="<?=$id?>">
 							<fieldset>
+
+							<div class="control-group">
+								<label class="control-label" for="title">标题</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="title" name="title" type="text" value="<?=$title?>">
+								</div>
+							  </div>
+							 
+
 							  <div class="control-group">
 								<label class="control-label" for="startdate">开始时间</label>
 								<div class="controls">
-								  <input class="input-xlarge focused datepicker" id="startdate" name="start_date" type="text" value="<?=$time?>">
+								  <input class="input-xlarge focused datepicker" id="startdate" name="start_date" type="text" value="<?=$start_date?>">
 								</div>
 							  </div>
 							 
 							  <div class="control-group">
 								<label class="control-label" for="enddate">结束时间</label>
 								<div class="controls">
-								  <input class="input-xlarge focused datepicker" id="enddate" name="end_date" type="text" value="<?=$time?>">
+								  <input class="input-xlarge focused datepicker" id="enddate" name="end_date" type="text" value="<?=$end_date?>">
 								</div>
 							  </div>
 
@@ -44,6 +53,22 @@
 								  <input class="input-xlarge focused" id="nop" name="nop" type="number" value="<?=$nop?>">
 								</div>
 							 </div>
+
+							<div class="control-group">
+								<label class="control-label" for="phone">电话</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="phone" name="phone" type="text" value="<?=$phone?>">
+								</div>
+							 </div>
+
+							<div class="control-group">
+								<label class="control-label" for="price">票价</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" id="price" name="price" type="text" value="<?=$price?>">
+								</div>
+							 </div>
+
+
 
 			                  		<?php require( dirname( __FILE__ ) . '/single_img_add.tpl.html'); ?>
 			                  		<?php require( dirname( __FILE__ ) . '/form_action.tpl.html'); ?>
