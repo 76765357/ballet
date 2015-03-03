@@ -23,6 +23,9 @@ $videoinfo = $db->fetchOne($videoinfo_sql);
 
 if($videoinfo)
 {
+	$num=$videoinfo['num']+1;
+	$db->update('video',array("num"=>$num),"id={$videoid}");
+/*
 	$video_pic_sql= "select image.file,image.desc from image, video_image where video_image.vid=$videoid and video_image.mid=image.id";
 	$video_pic = $db->fetchAll($video_pic_sql);
 
@@ -43,9 +46,9 @@ if($videoinfo)
 
 	}
 
-
+*/
 	$result['result']['detail']['description']=$videoinfo['description'];
-	$result['result']['detail']['images']=$image_list;
+	$result['result']['detail']['images']=$SITE_URL.$video_img_base_dir.$videoinfo['image'];;
 	$result['result']['detail']['title']=$videoinfo['title'];
     $result['result']['detail']['subtitle']=$videoinfo['subtitle'];
 	if($videoinfo['file'])

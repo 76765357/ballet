@@ -4,28 +4,29 @@ header("Content-type:application/json");
 include_once dirname(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR."init.php";
 include_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."conf.php";
 $actor_img_base_dir="attachment/img/actor".DIRECTORY_SEPARATOR;
-
-$actorlist_sql="select a.id,a.name,b.name as catename,c.file from actor a , actor_cate b , image c where a.cid =b.id and a.avatar=c.id ";
-
+@$cate=intval($_GET['cate']);
+$actorlist_sql="select a.id,a.name,a.des,b.name as catename,c.file from actor a , actor_cate b , image c where a.cid =b.id and a.avatar=c.id ";
+if($cate){
+	if($cate==999) 
+	{
+		$actorlist_sql.=" and a.recommend=1";
+	}else{
+		$actorlist_sql.=" and a.cid=$cate";
+	}
+}
 $actorlist = $db->fetchAll($actorlist_sql);
 #print_r($actorlist);
 
 if($actorlist)
-foreach($actorlist as $v)
-{
-	$c_actorlist[$v['catename']][]=$v;
-}
 
 $result=array();
 
-if($c_actorlist)
+if($actorlist)
 {
-	foreach($c_actorlist as $k => $v)
+	$actors_list=array();
+	foreach($actorlist as $vv)
 	{
-		$c_cator_info=array();
-		$actors_list=array();
-		foreach($v as $vv)
-		{
+			#print_r($vv);
 			$actor_info=array();
 			if($vv['file'])
 			{
@@ -35,15 +36,13 @@ if($c_actorlist)
 			}
 			$actor_info['id']=$vv['id'];
 			$actor_info['name']=$vv['name'];
+			$actor_info['des']=$vv['des'];
 			#$actors_list['catename']=$k;
 			$actors_list[]=$actor_info;
-		}
-		$c_cator_info['catename']=$k;
-		$c_cator_info['list']=$actors_list;
-		$c_cator_list[]=$c_cator_info;
-
 	}
-	$result['result']['actorlist']=$c_cator_list;
+
+	
+	$result['result']['actorlist']=$actors_list;
 	$result['success']='ture';
 }else{
 	$result['success']='false';

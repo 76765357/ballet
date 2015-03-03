@@ -15,10 +15,11 @@ if($_GET['page']>1)
 }
 
 
-
+/*
 $videolist_sql="select video.*,recommend.type from video,recommend where recommend.cid=2 and recommend.rid=video.id and type =2 order by video.id desc";
 
 $videolist = $db->fetchAll($videolist_sql);
+print_r($videolist);exit;
 $id_str="";
 foreach($videolist as $vv)
 {
@@ -86,6 +87,46 @@ if($videolist)
 
 }else{
 	$result['success']='false';
+}
+*/
+
+
+$total_info = $db->fetchOne("select count(1) as total from video ");
+$total=ceil($total_info['total']/$pagesize);
+
+$start=($page-1)*$pagesize;
+$videolist_sql="select * from video  order by id desc limit $start ,$pagesize";
+$videolist = $db->fetchAll($videolist_sql);
+
+if($videolist)
+{
+        foreach($videolist as $v)
+        {
+                $video_info=array();
+                $video_info['id']=$v['id'];
+                if($v['image'])
+                {
+                        $video_info['imgurl']=SITE_URL.$video_img_base_dir.$v['image'];
+                }else{
+                        $video_info['imgurl']="";
+                }
+
+        if($v['file'])
+        {
+            $video_info['vediourl']=SITE_URL.$video_img_base_dir.$v['file'];
+        }else{
+            $video_info['vediourl']="";
+        }
+                $video_info['title']=$v['title'];
+		$video_info['num']=$v['num'];
+                $video_list[]=$video_info;
+        }
+        $result['result']['list']=$video_list;
+        $result['total']=$total;
+        $result['success']='ture';
+
+}else{
+        $result['success']='false';
 }
 
 echo json_encode($result);

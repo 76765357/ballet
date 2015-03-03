@@ -52,7 +52,11 @@ if($schelist)
 		}else{
 			$sche_info['imgurl']="";
 		}
-		$sche_info['title']=$v['start_date'].",".$v['title'].$v['nop']."场,".$v['addr'];
+		$sche_info['title']=$v['title'];
+		$sche_info['time']=$v['start_date'];
+		$sche_info['address']=$v['addr'];
+		$sche_info['phone']=$v['phone'];
+		$sche_info['price']=$v['price'];
 		$sche_list[]=$sche_info;
 
 	}

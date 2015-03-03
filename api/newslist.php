@@ -44,7 +44,7 @@ if($total>$page*$pagesize)
 }
 $other_total=ceil($total/$pagesize);//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
-$newslist_sql="select a.id,a.cate_id,a.title,b.file from news a left join image b on a.img_id =b.id ";
+$newslist_sql="select a.id,a.cate_id,a.title,a.des,b.file from news a left join image b on a.img_id =b.id ";
 
 if($filter==1)
 {
@@ -80,6 +80,7 @@ if($newslist)
 			$new_info['imgurl']="";
 		}
 		$new_info['title']=$v['title'];
+		$new_info['des']=$v['des'];
 		$news_list[]=$new_info;
 
 	}

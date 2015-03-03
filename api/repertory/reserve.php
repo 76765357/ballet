@@ -22,7 +22,7 @@ if($total>$page*$pagesize)
 }
 $other_total=$total;//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
-$repertorylist_sql="select a.id,a.title,b.file from repertory a left join image b on a.img_id =b.id where reserve=1 order by a.id desc limit $start,$pagesize";
+$repertorylist_sql="select a.id,a.title,a.des,b.file from repertory a left join image b on a.img_id =b.id where reserve=1 order by a.id desc limit $start,$pagesize";
 
 $repertorylist = $db->fetchAll($repertorylist_sql);
 $result=array();
@@ -39,6 +39,7 @@ if($repertorylist)
 			$repertory_info['image']="";
 		}
 		$repertory_info['title']=$v['title'];
+		$repertory_info['des']=$v['des'];
 		$repertory_list[]=$repertory_info;
 
 	}
