@@ -1,0 +1,81 @@
+			<div class="row-fluid sortable ui-sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title="">
+						<h2><i class="icon-edit"></i> 添加视频</h2>
+					</div>
+					<div class="box-content">
+						<form id="mainform" class="form-horizontal">
+							<input name="tbname" type="hidden" value="video">
+							<input name="id" type="hidden" value="<?=$id?>">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label" for="focusedInput">视频标题</label>
+									<div class="controls">
+									  <input class="input-xlarge focused" id="focusedInput" name="video_title" type="text" value="<?=$title?>">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="focusedInput">视频子标题</label>
+									<div class="controls">
+									  <input class="input-xlarge focused" id="focusedInput" name="video_subtitle" type="text" value="<?=$subtitle?>">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="focusedInput">视频描述</label>
+									<div class="controls">
+									  <input class="input-xlarge focused" id="focusedInput" name="video_desc" type="text" value="<?=$description?>">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" >上传视频</label>
+									<div class="controls">
+									  <input class="input-xlarge focused" id="video_upload" data-url="upload.php?a=video" name="files[]" type="file" /> 视频文件最大支持256MB
+									</div>
+								  </div>
+								  <div class="control-group">
+									<label class="control-label"></label>
+									  <div class="controls" >
+										<div id="progressDiv" class="hide">
+										视频正在上传，请等待上传完成后再点击保存<div id="video_progress" style="width: 200px;"><div class="bar" style="width: 0%;"></div></div>
+										</div>
+										    <div id="video_info">
+											    <?php if($video){
+												echo '<strong>视频链接地址: </strong><a href="' . $video_src . '" target="_blank"> 点击查看</a>';
+														echo '<input name="video" type="hidden" value="'.$video.'"/>';
+											    }?>
+										    </div>
+									  </div>
+								  </div>
+
+								  <div class="control-group">
+									<label class="control-label" >视频图片</label>
+									<div class="controls">
+									  <input class="input-xlarge focused" id="videoimg_upload" data-url="upload.php?a=videoimg" name="files[]" type="file" /> 
+									</div>
+								  </div>
+
+
+								  <div class="control-group">
+									<label class="control-label"></label>
+									  <div class="controls" id="videoimg_thumbs">
+										<div id="videoimg_progress" style="width: 200px;"><div class="bar" style="width: 0%;"></div></div>
+										<?php if($video_img){
+										echo '<img src="'.$video_img_src.'"'.' />';
+										echo '<br /><strong>原图链接: </strong><a href="' . $video_img_ori_src . '" target="_blank"> 点击查看</a>';
+											echo '<input name="video_img" type="hidden" value="'.$video_img.'"/>';
+										}?>
+									</div>
+								</div>
+
+								  <div class="form-actions">
+									<button id="mainsave" type="button" class="btn span2 btn-primary">保存</button>
+								  </div>
+							</fieldset>
+						  </form>
+					
+					</div>
+				</div><!--/span-->
+			</div

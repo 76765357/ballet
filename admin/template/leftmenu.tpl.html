@@ -43,6 +43,11 @@ $nav = array(
 			'link'	=>	'troupe.php',
 			'text'	=>	'剧团管理'
 			),
+                        array(
+                        'icon'  =>      ' icon-bullhorn',
+                        'link'  =>      'troupe.php?id=2',
+                        'text'  =>      '乐团介绍'
+                        ),
 		),
 
 
@@ -106,12 +111,30 @@ $nav = array(
 			),*/
 		),
 
+                '消息推送' => array(
+                        array(
+                        'icon'  =>      'icon-plus',
+                        'link'  =>      'push_add.php',
+                        'text'  =>      '消息推送'
+                        ),
+                        array(
+                        'icon'  =>      'icon-list-alt',
+                        'link'  =>      'push.php',
+                        'text'  =>      '推送历史'
+                        ),
+                ),
+
 		'素材' => array(
 			array(
 			'icon'	=>	'icon-film',
 			'link'	=>	'video.php',
 			'text'	=>	'视频管理'
 			),
+			array(
+			'icon'	=>	'icon-film',
+			'link'	=>	'video_add.php',
+			'text'	=>	'新增视频'
+			)
 			/*array(
 			'icon'	=>	'icon-film',
 			'link'	=>	'image.php',

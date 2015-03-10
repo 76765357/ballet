@@ -28,4 +28,8 @@ define('TRP_RES_THUMB', '/../attachment/img/troupe/thumbnail/');
 define('VIDEO_IMG_RES', '/../attachment/img/video/');
 define('VIDEO_IMG_RES_THUMB', '/../attachment/img/video/thumbnail/');
 
+define('PUSH_RES', '/../attachment/img/push/');
+define('PUSH_RES_THUMB', '/../attachment/img/push/thumbnail/');
+
+
 define('VIDEO_RES', '/../attachment/video/');

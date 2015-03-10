@@ -338,6 +338,35 @@ switch ($tbname):
 			}
 		}
     	break;
+
+    case 'push':
+                $data = array(
+                        "title" => $title,
+                        "detail"  => $desc,
+                        "img"    => $avatar,
+                );
+                if($data)
+		{
+                        $db->insert($tbname,$data);
+                        $aid = $db->insertId();
+                }
+
+	break;
+    case 'video':
+		$videoid= v('video');
+                $data = array(
+                        "title" => $video_title,
+                        "subtitle" => $video_subtitle,
+                        "description"  => $video_desc,
+                        "image"    => $video_img,
+                );
+                if($videoid > 0){
+			$db->update($tbname,$data,"id={$videoid}");
+                        $aid = $db->insertId();
+                }
+	break;
+
+
     default:
         echo "wrong add";
 endswitch;

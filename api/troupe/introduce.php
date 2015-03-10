@@ -6,7 +6,9 @@ include_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."conf.php";
 $actor_img_base_dir="attachment/img/troupe".DIRECTORY_SEPARATOR;
 
      
-$troupeid=1;
+#$troupeid=1;
+$troupeid = v('id');
+if(empty($troupeid)) $troupeid=1;
 
 $troupeinfo_sql="select * from troupe where id=$troupeid";
 

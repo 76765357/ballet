@@ -1,0 +1,35 @@
+			<div class="row-fluid sortable ui-sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title="">
+						<h2><i class="icon-edit"></i> 消息推送</h2>
+					</div>
+					<div class="box-content">
+						<form id="mainform" class="form-horizontal">
+							<input name="tbname" type="hidden" value="push">
+							<fieldset>
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">推送内容</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" autofocus id="focusedInput" name="title" type="text" value="">
+								</div>
+							  </div>
+
+
+			                <?php require( dirname( __FILE__ ) . '/single_img_add.tpl.html'); ?>
+
+							  <div class="control-group">
+							  	<label class="control-label" for="textarea2">推送描述</label>
+								  <div class="controls">
+									<textarea class="cleditor" style="width:500px" id="textarea2" name="desc" rows="10"></textarea>
+								  </div>
+							  </div>
+                                                          <div class="form-actions">
+                                                                <button id="mainsave" type="button" class="btn span2 btn-primary">推送</button>
+                                                          </div>
+                                                        </fieldset>
+						  </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div

@@ -104,6 +104,17 @@ $(function () {
 	});
 	
     $("#mainsave").click(function(e){
+
+        if(window.location.href.indexOf('video_add.php') >0 ){ 
+		if( $("input[name='video_title']").val() == ''){
+			alert('请输入标题!');
+			return false;
+		}
+		if( $("input[name='video']").val() == undefined){
+			alert('请上传视频后再点击保存!');
+			return false;
+		}
+        }
         if($("#mainform")[0].checkValidity()){
     		e.preventDefault();
     		$.ajax({
@@ -137,7 +148,22 @@ $(function () {
 		$("#seeResult").hide();
 		$("#goonAdd").html('好的');
 	}
+
+        if(window.location.href.indexOf('troupe.php?id=2') >0 ){
+                $("#goonAdd").hide();
+                
+        }
+
+        if(window.location.href.indexOf('push_add.php') >0 ){ 
+                $("#goonAdd").hide();
+        }
+
 	$("#seeResult").click(function(){
-		window.location.href = $("input[name='tbname']").val() + '.php';
+		if(window.location.href.indexOf('troupe.php?id=2') >0 ){
+			window.location.href = 'troupe.php?id=2';
+		}else{
+			window.location.href = $("input[name='tbname']").val() + '.php';
+		}
+		
 	});
 });

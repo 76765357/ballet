@@ -1,15 +1,33 @@
 			<div class="row-fluid sortable ui-sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title="">
-						<h2><i class="icon-edit"></i> 编辑剧团信息</h2>
+						<h2><i class="icon-edit"></i> 
+							<?php
+							if($id==1)
+							{
+								echo '编辑剧团信息';
+							}else{
+								echo '编辑乐团信息';
+							}
+							?>
+						</h2>
 					</div>
 					<div class="box-content">
 						<form id="mainform" class="form-horizontal">
 							<input name="tbname" type="hidden" value="troupe">
-							<input name="id" type="hidden" value="1">
+							<input name="id" type="hidden" value="<?=$id?>">
 							<fieldset>
 							  <div class="control-group">
-							  	<label class="control-label">剧团介绍</label>
+							  	<label class="control-label">
+									<?php
+									if($id==1)
+									{
+										echo '剧团介绍';
+									}else{
+										echo '乐团介绍';
+									}
+									?>
+								</label>
 								  <div class="controls">
 									  <!--<textarea class="cleditor" autofocus name="content" rows="5" col="10"><?$content?></textarea>-->
 									<textarea class="cleditor"  autofocus name="content" rows="20" style="width:500px"><?=$content?></textarea>

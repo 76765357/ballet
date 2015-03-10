@@ -73,6 +73,14 @@ if($a == 'videoimg'){
     );
 }
 
+//推送
+if($a == 'push'){
+    $options = array(
+        'upload_dir' => dirname(__FILE__) . PUSH_RES,
+        'upload_url' => get_full_url() . PUSH_RES
+    );
+}
+
 
 $options = $options + $base_config;
 class CustomUploadHandler extends UploadHandler {
