@@ -344,11 +344,33 @@ switch ($tbname):
                         "title" => $title,
                         "detail"  => $desc,
                         "img"    => $avatar,
+			"p_time" => date("Y-m-d H:i",time()),
                 );
                 if($data)
 		{
-                        $db->insert($tbname,$data);
-                        $aid = $db->insertId();
+			include_once dirname(__FILE__) . '/' . 'jpush.php';
+    			$pushObj = new Jpush();
+    			//组装需要的参数
+    			$receive = 'all';     //全部
+    			$content = $data['title'];
+    			$m_type = '';
+    			$m_txt = '';
+    			$m_time = '600';        //离线保留时间
+ 
+    			//调用推送,并处理
+    			$result = $pushObj->push($receive,$content,$m_type,$m_txt,$m_time);
+    			if($result){
+        			$res_arr = json_decode($result, true);
+        			if(isset($res_arr['error'])){                       //如果返回了error则证明失败
+        				ajax_json(array('status'=>1,'msg'=>'push fail'));
+				}else{
+        			        $db->insert($tbname,$data);
+                        		$aid = $db->insertId();
+				}
+    			}else{      //接口调用失败或无响应
+    				ajax_json(array('status'=>1,'msg'=>'push fail'));
+			}
+
                 }
 
 	break;
