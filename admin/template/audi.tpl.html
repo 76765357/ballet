@@ -34,6 +34,7 @@ foreach($result as $k=>$v){
 							
 							是<input type="radio" value=1 name="name_<?=$v['id']?>" usrname="<?=$v['name']?>" <?=$yes?>/>
 							否<input type="radio" value=0 name="name_<?=$v['id']?>" usrname="<?=$v['name']?>" <?=$no?>/>
+							<a class="btn btn-danger del" data-id="<?=$v['id']?>" href="#"><i class="icon-trash icon-white"></i>删除</a>
 						</td>
 					</tr>
 		<?php

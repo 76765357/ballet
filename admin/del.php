@@ -36,6 +36,9 @@ switch ($tbname):
     case 'video':
     	$db->delete('video',"id={$id}");
         break;
+    case 'audi':
+    	$db->delete('audi',"id={$id}");
+        break;
     default:
         echo "wrong!";
 endswitch;

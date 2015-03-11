@@ -6,6 +6,7 @@ $id = getReqInt('id');
 $type = 'sche';
 $data['single_image_text'] = '图片';
 $data['single_image_moudle'] = $type;
+$data['single_image_size'] = ' 图片尺寸 138*194';
 $data['rpt_select'] = get_rpt_select_one();
 if($id > 0){
 	$result = $db->fetchOne("select * from schedule where id='{$id}'");

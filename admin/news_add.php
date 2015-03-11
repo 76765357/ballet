@@ -9,6 +9,7 @@ $data['single_image_moudle'] = $type;
 $data['multi_image_text'] = '新闻图片';
 $data['multi_image_moudle'] = $type;
 $data['news_cate_select'] = get_news_cate_select();
+$data['single_image_size'] = ' 图片尺寸 138*194';
 if($id > 0){
 	$result = $db->fetchOne("select * from news where id='{$id}'");
 	if($result){

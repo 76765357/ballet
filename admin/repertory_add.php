@@ -8,6 +8,7 @@ $data['multi_image_text'] = '剧照';
 $data['multi_image_moudle'] = 'rpt';
 $data['single_image_text'] = '剧照主图';
 $data['single_image_moudle'] = $type;
+$data['single_image_size'] = ' 图片尺寸 138*194';
 $data['video_list'] = output_video_list();
 if($id > 0){
 	$result = $db->fetchOne("select * from repertory where id='{$id}'");

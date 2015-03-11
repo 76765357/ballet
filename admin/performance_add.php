@@ -10,6 +10,7 @@ $data['multi_image_moudle'] = $type;
 $data['single_image_text'] = '演出主图';
 $data['single_image_moudle'] = $type;
 $data['video_list'] = output_video_list();
+$data['single_image_size'] = ' 图片尺寸 138*194';
 
 if($id > 0){
 	$result = $db->fetchOne("select * from performance where id='{$id}'");

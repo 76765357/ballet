@@ -9,6 +9,7 @@ $data['multi_image_text'] = '演员剧照';
 $data['multi_image_moudle'] = $type;
 $data['single_image_text'] = '头像';
 $data['single_image_moudle'] = $type;
+$data['single_image_size'] = ' 图片尺寸 150*150';
 if($id > 0){
 	$result = $db->fetchOne("select * from actor where id='{$id}'");
 	if($result){
