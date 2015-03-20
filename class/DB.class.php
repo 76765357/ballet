@@ -244,7 +244,7 @@ class DB
 	{
 		if(false === strpos($where, '='))
 		{
-			return false;
+			//return false;
 		}
 		$sql = "DELETE FROM ". $table_name ." WHERE " . $where ;
 		return $this->query($sql);

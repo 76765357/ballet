@@ -15,12 +15,12 @@ switch ($tbname):
     	$db->delete('actor_image',"aid={$id}");
     	break;
     case 'news':
-    	$db->delete('news',"id={$id}");
-    	$db->delete('news_image',"nid={$id}");
+    	$db->delete('news',"id in ({$id})");
+    	$db->delete('news_image',"nid in ({$id})");
         break;
     case 'rpt':
-    	$db->delete('repertory',"id={$id}");
-    	$db->delete('repertory_image',"rid={$id}");
+    	$db->delete('repertory',"id in ({$id})");
+    	$db->delete('repertory_image',"rid in ({$id})");
         break;
     case 'pfm':
     	$db->delete('performance',"id={$id}");
@@ -28,10 +28,10 @@ switch ($tbname):
     	$db->delete('performance_repertory',"pid={$id}");
         break;
     case 'sche':
-    	$db->delete('schedule',"id={$id}");
+    	$db->delete('schedule',"id in ({$id})");
         break;
     case 'message':
-    	$db->delete('message',"id={$id}");
+    	$db->delete('message',"id in ({$id})");
         break;
     case 'video':
     	$db->delete('video',"id={$id}");

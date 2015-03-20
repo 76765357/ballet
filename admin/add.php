@@ -165,22 +165,25 @@ switch ($tbname):
 
 		if($video_type=='#select'){
 			$vid = v('videoid');
-			$data = array('vid' => $vid);
-			$db->update($tbname,$data,"id={$aid}");
+			if($vid > 0){
+				$data = array('vid' => $vid);
+				$db->update($tbname,$data,"id={$aid}");
+			}
 		}
 
 		if($video_type=='#upload'){
 			$vid = v('video');
-			$data = array(
-				'title'			=>	$video_title,
-				'subtitle'		=>	$video_subtitle,
-				'description'		=>	$video_desc,
-				'image'			=>	$video_img
-			);
-			$db->update('video',$data,"id={$vid}");
-			$data = array('vid' => $vid);
-			$db->update($tbname,$data,"id={$aid}");
-
+			if($vid > 0){
+				$data = array(
+					'title'			=>	$video_title,
+					'subtitle'		=>	$video_subtitle,
+					'description'		=>	$video_desc,
+					'image'			=>	$video_img
+				);
+				$db->update('video',$data,"id={$vid}");
+				$data = array('vid' => $vid);
+				$db->update($tbname,$data,"id={$aid}");
+			}
 		}
         break;
      case 'performance':
@@ -226,22 +229,25 @@ switch ($tbname):
 		
 		if($video_type=='#select'){
 			$vid = v('videoid');
-			$data = array('vid' => $vid);
-			$db->update($tbname,$data,"id={$aid}");
+			if($vid > 0){
+				$data = array('vid' => $vid);
+				$db->update($tbname,$data,"id={$aid}");
+			}
 		}
 
 		if($video_type=='#upload'){
 			$vid = v('video');
-			$data = array(
-				'title'			=>	$video_title,
-				'subtitle'		=>	$video_subtitle,
-				'description'		=>	$video_desc,
-				'image'			=>	$video_img
-			);
-			$db->update('video',$data,"id={$vid}");
-			$data = array('vid' => $vid);
-			$db->update($tbname,$data,"id={$aid}");
-
+			if($vid > 0){
+				$data = array(
+					'title'			=>	$video_title,
+					'subtitle'		=>	$video_subtitle,
+					'description'		=>	$video_desc,
+					'image'			=>	$video_img
+				);
+				$db->update('video',$data,"id={$vid}");
+				$data = array('vid' => $vid);
+				$db->update($tbname,$data,"id={$aid}");
+			}
 		}
 
 		/*if($vid > 0){
