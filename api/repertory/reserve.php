@@ -12,7 +12,7 @@ if($_GET['page']>1)
 }else{
 	$page=1;
 }
-$total_info = $db->fetchOne("select count(1) as total from repertory where reserve=1");
+$total_info = $db->fetchOne("select count(1) as total from repertory where reserve=1 and display=1");
 $total=$total_info['total'];
 if($total>$page*$pagesize)
 {
@@ -22,7 +22,7 @@ if($total>$page*$pagesize)
 }
 $other_total=$total;//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
-$repertorylist_sql="select a.id,a.title,a.des,b.file from repertory a left join image b on a.img_id =b.id where reserve=1 order by a.id desc limit $start,$pagesize";
+$repertorylist_sql="select a.id,a.title,a.des,b.file from repertory a left join image b on a.img_id =b.id where reserve=1 and display=1 order by a.id desc limit $start,$pagesize";
 
 $repertorylist = $db->fetchAll($repertorylist_sql);
 $result=array();

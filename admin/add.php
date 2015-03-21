@@ -32,6 +32,10 @@ $rpt_desc	= v('rpt_desc');
 $recommend = v('recommend');
 //是否为保留剧目 1：保留 0：非保留
 $reserve=v('reserve');
+//是否为年度推荐 1：推荐 0：不推荐
+$y_recommend = v('y_recommend');
+//是否显示 1：显示 0：不显示
+$display = v('display');
 //推荐类别，1：新闻，2：视频 3：演出  4：剧目
 $rcid=v('rcid');
 //推荐id
@@ -51,6 +55,7 @@ $rpts = v('rpts');
 
 //场次
 $nop = v('nop');
+$ticket = v('ticket');
 
 $recom_reason= v('recom_reason');
 //单个剧目id
@@ -140,7 +145,9 @@ switch ($tbname):
 			"phone" 		=> $phone,
 			"addr" 			=> $addr,
 			"reserve"		=> $reserve,
+			"y_recommend"	=> $y_recommend,
 			"des"		=> $des,
+			"display"	=> $display,
 		);
 		if($id > 0){
 			//do update
@@ -308,12 +315,14 @@ switch ($tbname):
 			"title"	=> $title,
 			"start_date"	=> $start_date,
 			"end_date"	=> $end_date,
+			"description"  => $desc,
 			"addr" 	=> $addr,
 			"rpt_id" => $rpt_id,
 			"nop"	=> $nop,
 			"img_id"    => $avatar,
 			"phone"		=> $phone,
 			"price"		=> $price,
+			"ticket"         => $ticket,
 		);
 		if($id > 0){
 			//do update

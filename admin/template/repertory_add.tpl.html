@@ -21,7 +21,7 @@
 								</div>
 							  </div>
 			                  <?php require( dirname( __FILE__ ) . '/single_img_add.tpl.html'); ?>
-							  <div class="control-group">
+				<!--			  <div class="control-group">
 								<label class="control-label" for="focusedInput">剧目时间</label>
 								<div class="controls">
 								  <input class="input-xlarge focused datepicker" name="time" type="text" value="<?=$time?>">
@@ -39,9 +39,9 @@
 									<textarea class="" id="textarea2" name="desc" rows="15" style="width:500px"><?=$desc?></textarea>
 								  </div>
 							  </div>
-							 
+				-->			 
 			                    <?php require( dirname( __FILE__ ) . '/multi_img_add.tpl.html'); ?>
- 
+ <!--
 							  <div class="control-group">
 							  	<label class="control-label" for="textarea2">剧目订票电话</label>
 								  <div class="controls">
@@ -54,7 +54,7 @@
 								  <input class="input-xlarge focused" id="focusedInput" name="addr" type="text" value="<?=$addr?>">
 								</div>
 							  </div>
-
+-->
                              <div class="control-group">
                                 <label class="control-label" >是否保留剧目</label>
                                 <div class="controls">
@@ -71,6 +71,38 @@
                                 </div>    
                             </div>
 
+                             <div class="control-group">
+                                <label class="control-label" >是否年度推荐</label>
+                                <div class="controls">
+
+                                  <label class="radio">
+                                    <input type="radio" name="y_recommend" value="1" <?php if($y_recommend == 1) echo 'checked'?>>
+                                    是
+                                  </label>
+                                  <div style="clear:both"></div>
+                                  <label class="radio">
+                                    <input type="radio" name="y_recommend" value="0" <?php if($y_recommend == 0) echo 'checked'?>>
+                                    否
+                                  </label>
+                                </div>
+                            </div>
+
+
+                             <div class="control-group">
+                                <label class="control-label" >是否显示</label>
+                                <div class="controls">
+                                        
+                                  <label class="radio">
+                                    <input type="radio" name="display" value="1" <?php if($display == 1) echo 'checked'?>>
+                                    是
+                                  </label>
+                                  <div style="clear:both"></div>
+                                  <label class="radio">
+                                    <input type="radio" name="display" value="0" <?php if($display == 0) echo 'checked'?>>
+                                    否
+                                  </label>
+                                </div>
+                            </div>
 					<div class="control-group">
 						<label class="control-label" for="add_des">简短描述</label>
 						<div class="controls">

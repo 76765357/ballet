@@ -26,7 +26,7 @@ if($total>$page*$pagesize)
 }
 $other_total=ceil($total/$pagesize);//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
-$schelist_sql="select a.*,b.title from schedule a,repertory b where a.rpt_id=b.id";
+$schelist_sql="select a.*,b.title r_title from schedule a,repertory b where a.rpt_id=b.id";
 
 
 $schelist_sql.=" order by a.id desc limit $start,$pagesize";
@@ -54,9 +54,14 @@ if($schelist)
 		}
 		$sche_info['title']=$v['title'];
 		$sche_info['time']=$v['start_date'];
+		$sche_info['endtime']=$v['end_date'];
+		$sche_info['desc']=$v['description'];
+		$sche_info['repertory']=$v['r_title'];
 		$sche_info['address']=$v['addr'];
 		$sche_info['phone']=$v['phone'];
 		$sche_info['price']=$v['price'];
+		$sche_info['ticket']=$v['ticket'];
+		$sche_info['sessions']=$v['nop'];
 		$sche_list[]=$sche_info;
 
 	}
