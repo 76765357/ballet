@@ -5,6 +5,7 @@ include_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."init.php";
 include_once dirname(__FILE__).DIRECTORY_SEPARATOR."conf.php";
 $pagesize=15;
 $sche_img_base_dir="attachment/img/sche".DIRECTORY_SEPARATOR;
+$repertory_img_base_dir="attachment/img/repertory".DIRECTORY_SEPARATOR;
 @$_GET['page']=intval($_GET['page']);
 if($_GET['page']>1)
 {
@@ -26,7 +27,7 @@ if($total>$page*$pagesize)
 }
 $other_total=ceil($total/$pagesize);//需求改了，旧需求没删
 $start=($page-1)*$pagesize;
-$schelist_sql="select a.*,b.title r_title from schedule a,repertory b where a.rpt_id=b.id";
+$schelist_sql="select a.* from schedule a";
 
 
 $schelist_sql.=" order by a.id desc limit $start,$pagesize";
@@ -43,6 +44,7 @@ if($schelist)
 	{
 		$sche_info=array();
 		$sche_info['id']=$v['id'];
+		$sid=$v['id'];
 		if($v['img_id']>0)
 		{
 			$img_id=$v['img_id'];
@@ -52,11 +54,45 @@ if($schelist)
 		}else{
 			$sche_info['imgurl']="";
 		}
+		$repertory_list=array();
+		$repertory_sql="select repertory.id,repertory.title,repertory.desc,repertory.img_id from  schedule_repertory,repertory where schedule_repertory.sid=$sid and schedule_repertory.rid=repertory.id ";
+		$r_list = $db->fetchAll($repertory_sql);
+		
+		if($r_list)
+        	{
+			foreach($r_list as $vv)
+        		{
+                		$repertory_info=array();
+                		$repertory_info['id']=$vv['id'];
+        
+				if($vv['img_id'])
+        			{
+            				$pic_id=$vv['img_id'];
+            				$pic_sql="select file from image where id=$pic_id";
+            				$pic = $db->fetchOne($pic_sql);
+        			
+        				if($pic['file'])
+        				{
+            					$repertory_info['image']=SITE_URL.$repertory_img_base_dir.$pic['file'];
+        				}else{
+            					$repertory_info['image']="";
+        				}
+				}else{
+					$repertory_info['image']="";
+				}
+                		$repertory_info['title']=$vv['title'];
+                		$repertory_info['des']=$vv['des'];
+                		$repertory_list[]=$repertory_info;
+
+        		}
+		}
+		$sche_info['repertorylist']=$repertory_list;
+
 		$sche_info['title']=$v['title'];
 		$sche_info['time']=$v['start_date'];
 		$sche_info['endtime']=$v['end_date'];
 		$sche_info['desc']=$v['description'];
-		$sche_info['repertory']=$v['r_title'];
+		#$sche_info['repertory']=$v['r_title'];
 		$sche_info['address']=$v['addr'];
 		$sche_info['phone']=$v['phone'];
 		$sche_info['price']=$v['price'];

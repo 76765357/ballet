@@ -6,7 +6,7 @@
 								  <th>时间</th>
 								  
 								  <th>地点</th>
-								  <th>剧目</th>
+								  <th>日程</th>
 								  <th>场次</th>
 								  <th>操作</th>
 							  </tr>
@@ -20,7 +20,7 @@ foreach($result as $k=>$v){
 						<td><?=$v['start_date']?> - <?=$v['end_date']?></td>
 						
 						<td class="center"><?=$v['addr']?></td>
-						<td class="center"><?=$v['rpt_name']?></td>
+						<td class="center"><?=$v['title']?></td>
 						<td class="center"><?=$v['nop']?></td>
 						<td class="center">
 							<a class="btn btn-info" href="sche_add.php?id=<?=$v['id']?>"><i class="icon-edit icon-white"></i>编辑</a>

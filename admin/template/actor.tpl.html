@@ -5,7 +5,7 @@
 								  <th>姓名</th>
 								  
 								  <th>演员类别</th>
-								  <th>是否为特别介绍</th>
+								 <!-- <th>是否为特别介绍</th> -->
 								  <th>操作</th>
 							  </tr>
 						  </thead>
@@ -17,7 +17,7 @@ foreach($result as $k=>$v){
 						<td><?=$v['name']?></td>
 						
 						<td class="center"><?=$actor_cate[$v['cid']]['name']?></td>
-						<td class="center">
+<!--						<td class="center">
 						<?php
 						if($v['recommend'] == 1){
 							$status = 'important';
@@ -27,6 +27,7 @@ foreach($result as $k=>$v){
 						?>
 							<span class="label label-<?=$status?>">    <?=$yesno[$v['recommend']]?>   </span>
 						</td>
+-->
 						<td class="center">
 							<a class="btn btn-info" href="actor_add.php?id=<?=$v['id']?>"><i class="icon-edit icon-white"></i>编辑</a>
 							<a class="btn btn-danger del" data-id="<?=$v['id']?>" href="#"><i class="icon-trash icon-white"></i>删除</a>

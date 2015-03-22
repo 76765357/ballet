@@ -328,10 +328,18 @@ switch ($tbname):
 			//do update
 			$db->update($tbname,$data,"id={$id}");
 			$aid = $id;
+			$db->delete('schedule_repertory',"sid={$id}");
 		}else{
 			$db->insert($tbname,$data);
 			$aid = $db->insertId();
 		}
+                //包含的剧目关系
+                if(is_array($rpts)){
+                        foreach($rpts as $k=>$v){
+                                $data = array('sid'=>$aid,'rid'=>$v);
+                                $db->insert('schedule_repertory',$data);
+                        }
+                }
     	break;
     case 'audi':
 		$data = array(

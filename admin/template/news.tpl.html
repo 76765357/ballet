@@ -7,9 +7,10 @@
 								  <th>类别</th>
 								 <!-- <th>子标题</th>  -->
 								  <th>时间</th>
-                                  <th>推荐状态</th>
+<!--                                  <th>推荐状态</th>
                                   <th>推荐管理</th>
-								  <th>操作</th>
+
+-->								  <th>操作</th>
 							  </tr>
 						  </thead>
 <tbody>
@@ -22,6 +23,7 @@ foreach($result as $k=>$v){
 						<td class="center"><?=$news_cate[$v['cate_id']]['name']?></td>
 					<!--	<td><?=$v['subtitle']?></td>  -->
 						<td><?=$v['add_time']?></td>
+<!--
                             <?php
                             if($v['type'] == 1){?>
                             <td class="center"><span class="label label-warning">推荐</span></td>
@@ -45,6 +47,7 @@ foreach($result as $k=>$v){
                             </td>
                             <?php 
                             }?>
+-->
 						<td class="center">
 							<a class="btn btn-info" href="news_add.php?id=<?=$v['id']?>"><i class="icon-edit icon-white"></i>编辑</a>
 							<a class="btn btn-danger del" data-id="<?=$v['id']?>" href="#"><i class="icon-trash icon-white"></i>删除</a>
