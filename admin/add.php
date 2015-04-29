@@ -24,10 +24,13 @@ $avatar_desc = v('avatar_desc');
 $desc	= (v('desc'));
 //描述
 $des	= (v('des'));
+//排序
+$sort    = (v('sort'));
 $content	= (v('content'));
 //剧照和剧照描述
 $rpt	= v('rpt');
 $rpt_desc	= v('rpt_desc');
+$rpt_sort = v('rpt_sort');
 //是否为推荐 1：推荐 0：不推荐
 $recommend = v('recommend');
 //是否为保留剧目 1：保留 0：非保留
@@ -80,6 +83,7 @@ switch ($tbname):
 			"recom_reason"	=>$recom_reason,
 			"profess"	=> $profess,
 			"des"		=> $des,
+			"sort"           => $sort,
 		);
 		if($id > 0){
 			//do update
@@ -97,7 +101,7 @@ switch ($tbname):
 		if(is_array($rpt)){
 			foreach($rpt as $k=>$v){
 				$data = array('aid'=>$aid,'mid'=>$v);
-				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
+				$db->update('image',array("desc"=>$rpt_desc[$k],"sort"=>$rpt_sort[$k]),"id={$v}");
 				$db->insert('actor_image',$data);
 			}
 		}
@@ -128,7 +132,7 @@ switch ($tbname):
 		if(is_array($rpt)){
 			foreach($rpt as $k=>$v){
 				$data = array('nid'=>$aid,'mid'=>$v);
-				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
+				$db->update('image',array("desc"=>$rpt_desc[$k],"sort"=>$rpt_sort[$k]),"id={$v}");
 				$db->insert('news_image',$data);
 			}
 		}
@@ -165,7 +169,7 @@ switch ($tbname):
 		if(is_array($rpt)){
 			foreach($rpt as $k=>$v){
 				$data = array('rid'=>$aid,'mid'=>$v);
-				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
+				$db->update('image',array("desc"=>$rpt_desc[$k],"sort"=>$rpt_sort[$k]),"id={$v}");
 				$db->insert('repertory_image',$data);
 			}
 		}
@@ -221,7 +225,7 @@ switch ($tbname):
 		if(is_array($rpt)){
 			foreach($rpt as $k=>$v){
 				$data = array('pid'=>$aid,'mid'=>$v);
-				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
+				$db->update('image',array("desc"=>$rpt_desc[$k],"sort"=>$rpt_sort[$k]),"id={$v}");
 				$db->insert('performance_image',$data);
 			}
 		}
@@ -290,7 +294,7 @@ switch ($tbname):
 		if(is_array($rpt)){
 			foreach($rpt as $k=>$v){
 				$data = array('tid'=>$aid,'mid'=>$v);
-				$db->update('image',array("desc"=>$rpt_desc[$k]),"id={$v}");
+				$db->update('image',array("desc"=>$rpt_desc[$k],"sort"=>$rpt_sort[$k]),"id={$v}");
 				$db->insert('troupe_image',$data);
 			}
 		}

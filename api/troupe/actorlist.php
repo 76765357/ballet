@@ -14,6 +14,7 @@ if($cate){
 		$actorlist_sql.=" and a.cid=$cate";
 	}
 }
+$actorlist_sql.=" order by sort";
 $actorlist = $db->fetchAll($actorlist_sql);
 #print_r($actorlist);
 

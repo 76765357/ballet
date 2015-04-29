@@ -30,8 +30,8 @@ $start=($page-1)*$pagesize;
 $schelist_sql="select a.* from schedule a";
 
 
-$schelist_sql.=" order by a.id desc limit $start,$pagesize";
-
+#$schelist_sql.=" order by a.id desc limit $start,$pagesize";
+$schelist_sql.=" limit $start,$pagesize";
 
 
 $schelist = $db->fetchAll($schelist_sql);

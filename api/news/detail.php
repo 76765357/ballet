@@ -32,7 +32,7 @@ if($videoid)
 
 if($newesinfo)
 {
-	$news_pic_sql= "select image.file,image.desc from image, news_image where news_image.nid=$newsid and news_image.mid=image.id";
+	$news_pic_sql= "select image.file,image.desc from image, news_image where news_image.nid=$newsid and news_image.mid=image.id order by image.sort";
 	$news_pic = $db->fetchAll($news_pic_sql);
 	#print_r($news_pic);
 

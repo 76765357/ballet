@@ -16,7 +16,7 @@ $troupeinfo = $db->fetchOne($troupeinfo_sql);
 
 if($troupeinfo)
 {
-	$troupe_pic_sql= "select image.file,image.desc from image, troupe_image where troupe_image.tid=$troupeid and troupe_image.mid=image.id";
+	$troupe_pic_sql= "select image.file,image.desc from image, troupe_image where troupe_image.tid=$troupeid and troupe_image.mid=image.id order by image.sort";
 	$troupe_pic = $db->fetchAll($troupe_pic_sql);
 	if($troupe_pic)
 	foreach($troupe_pic as $v)
@@ -34,7 +34,8 @@ if($troupeinfo)
 
 	}
     $result['result']['images']=$image_list;
-	$result['result']['introduce']=strip_tags($troupeinfo['content']);
+	#$result['result']['introduce']=strip_tags($troupeinfo['content']);
+	$result['result']['introduce']=$troupeinfo['content'];
 
 	$result['success']='ture';
 }else{
